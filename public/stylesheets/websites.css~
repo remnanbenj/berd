@@ -1,0 +1,102 @@
+:root {
+  --page-color: #8AB269;
+}
+
+/* toolbar */
+.toolbar-hideShow { color: var(--page-color); border-bottom: 1px solid var(--page-color); }
+.toolbar-hideShow:hover { background: var(--page-color); }
+/* toolbar title */
+.toolbar-title { color: var(--page-color); }
+.toolbar-menu-button:hover { background: var(--page-color); }
+.toolbar-menu-button-burger { box-shadow: 0px 0px 1px 1px var(--page-color); }
+/* toolbar menu */
+.toolbar-menu-holder { border-bottom: 1px solid var(--page-color); }
+.toolbar-menu-item { color: var(--page-color); border-bottom: 1px solid var(--page-color) }
+.toolbar-menu-item:hover { background: var(--page-color); }
+/* toolbar inner */
+.toolbar-inner { border-top: 1px solid var(--page-color); border-bottom: 1px solid var(--page-color); }
+
+.toolbar-inner-website {
+  position: relative;
+  cursor: pointer;
+
+  width: 240px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 5px;
+
+  color: var(--page-color);
+  text-align: center;
+  font-size: 17px;
+
+  border: 1px solid white;
+  border-bottom: 1px solid var(--page-color);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  -webkit-transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.toolbar-inner-website:hover {
+  background: var(--page-color);
+  color: white;
+}
+
+.toolbar-inner-website-ghost {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(138,178,105,0.3)), color-stop(.5,rgba(138,178,105,0.2)));     
+}
+
+.toolbar-inner-website-img {
+  height: 126px;
+  width: 100%;
+  margin-bottom: 4px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--page-color);
+}
+
+/* website holder */
+
+.website-holder {
+  height: 100%;
+  float: right;
+  width: calc(100% - 300px);
+  position: relative;
+}
+
+.website-text {
+  position: fixed;
+  top: -80px;
+  width: calc(100% - 300px);
+  left: calc(300px);
+  text-align: center;
+  color: #8AB269;
+  -webkit-transition: transform 0.6s;
+  transition: transform 0.6s;
+}
+
+.website {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  -webkit-transition: width 1s, opacity 0.5s;
+  transition: width 1s, opacity 0.5s;
+}
+
+@media screen and (max-width: 700px) {
+}
+
+

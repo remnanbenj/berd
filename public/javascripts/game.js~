@@ -1,0 +1,389 @@
+// Global Variables
+var selectedID;
+var nextID = 0;
+var moveableSquareIDs = [];
+var actionableSquareIDs = [];
+var entityElements = [];
+
+var teamTurn = 0;
+
+// Setup board
+var squares = [];
+for(i = 0; i < 36; i++) squares[i] = null;
+var teamUnitCounts = [];
+
+// Player team
+teamUnitCounts[0] = [];
+createEntity(3, 5, 'Tank', 0);
+createEntity(4, 5, 'Warrior', 0);
+createEntity(3, 6, 'Ranger', 0);
+createEntity(4, 6, 'Healer', 0);
+
+// Enemy team
+teamUnitCounts[1] = [];
+createEntity(3, 2, 'Warrior', 1);
+createEntity(4, 2, 'Warrior', 1);
+createEntity(5, 1, 'Ranger', 1);
+createEntity(2, 1, 'Ranger', 1);
+
+// Create an Entity
+function createEntity(x, y, entityName, teamID) {
+  var squareID = 6*(y-1)+(x-1);
+  if(squares[squareID]) return;
+  var pixelLeft = (x-1) * 80 + 5;
+  var pixelTop = (y-1) * 80 + 5;
+
+  var playerColor;
+  if(teamID == 0) {
+    playerColor = '#0f0';
+
+  } else {
+    playerColor = '#f00';
+  }
+
+  var entityImage;
+  var entityHealth;
+  var entityAction;
+  var entityActionType;
+  var entityActionAmount;
+  var entityMovement;
+
+  if(entityName == 'Warrior') {
+    entityImage = "<div class='game-square-entity-image' style='background: grey;'></div>";
+    entityHealth = 8;
+    entityMovement = 1;
+    entityAction = 1;
+    entityActionType = "Damage";
+    entityActionAmount = 3;
+
+  } else if(entityName == 'Ranger') {
+    entityImage = "<div class='game-square-entity-image' style='background: lightblue;'></div>";
+    entityHealth = 5;
+    entityMovement = 1;
+    entityAction = 2;
+    entityActionType = "Damage";
+    entityActionAmount = 2;
+
+  } else if(entityName == 'Healer') {
+    entityImage = "<div class='game-square-entity-image' style='background: #FFADAD;'></div>";
+    entityHealth = 6;
+    entityMovement = 1;
+    entityAction = 2;
+    entityActionType = "Heal";
+    entityActionAmount = 3;
+
+  } else if(entityName == 'Tank') {
+    entityImage = "<div class='game-square-entity-image' style='background: #96744C;'></div>";
+    entityHealth = 10;
+    entityMovement = 1;
+    entityAction = 1;
+    entityActionType = "Damage";
+    entityActionAmount = 2;
+
+  }
+
+  var entity = {id: getID(), type: entityName, x: x, y: y, owner: teamID, health: entityHealth, maxHealth: entityHealth, movement: entityMovement, maxMovement: entityMovement, action: entityAction, maxAction: entityAction, actionType: entityActionType, actionAmount: entityActionAmount};
+  squares[squareID] = entity;
+  teamUnitCounts[teamID].push(entity);
+
+  var entityStyle;
+  if(teamID == 0)
+    entityStyle = "top: "+pixelTop+"px; left: "+pixelLeft+"px; cursor: url(/images/cursor_select.png) 14 14, crosshair;";
+  else
+    entityStyle = "top: "+pixelTop+"px; left: "+pixelLeft+"px; cursor: url(/images/cursor_select_enemy.png) 14 14, crosshair;";
+
+  var playerColorDivInner = "<div id='entity"+entity.id+"health' class='game-square-entity-playerColor-inner' style='background: "+playerColor+";'></div>";
+  var playerColorDiv = "<div class='game-square-entity-playerColor' style='border: 1px solid "+playerColor+";'>"+playerColorDivInner+"</div>";
+  var entityLayout = entityImage + playerColorDiv;
+
+  $('.game-container').append("<div class='game-square-entity' id='entity"+entity.id+"' style='"+entityStyle+"' oncontextmenu='altClickedEntity("+entity.id+"); return false;' onclick='clickedEntity(\""+entity.id+"\")'; return false;'>"+entityLayout+"</div>");
+  entityElements.push($('#entity'+entity.id));
+}
+
+
+/* CLICK FUNCTIONS*/
+
+// Click square
+function clicked(squareID) {
+  // Clear highlighted squares
+  clearBoard();
+  // Clear the selected info box
+  clearSelectedInfo();
+  // Set this square as selected
+  selectedID = squareID;
+  $('#'+selectedID).css('background', '#FFE99B');
+  // Set selected info box as empty
+  $('.hover-info-selected').css('opacity', '1')
+  $('.hover-info-selected-type').html("Empty");
+  $('.hover-info-selected-action').css('background', 'none');
+  $('.hover-info-selected-health').css('background', 'none');
+  $('.hover-info-selected-actions').css('background', 'none');
+  $('.hover-info-selected-movement').css('background', 'none');
+  $('.hover-info-selected-actions').css('border', 'none');
+  $('.hover-info-selected-movement').css('border', 'none');
+}
+
+// Clicked an entity
+function clickedEntity(entityID){
+  // Get square ID
+  var squareID;
+  var entity;
+  var lastEntity = null;
+  if(squares[selectedID]) lastEntity = squares[selectedID];
+  for(i = 0 ; i < squares.length; i++) { 		// Search through squares
+    if(squares[i] && squares[i].id == entityID) { 	// We've found the square with this entity
+      entity = squares[i];				// If its an enemy then we don't render actionable squares
+      squareID = 6 * (squares[i].y-1) + (squares[i].x-1);
+      clicked(squareID); 				// Click this square
+      $('#'+selectedID).css('background', '#fff');
+      break;						// End loop after sqaure found
+    }
+  }
+  if(lastEntity && entity == lastEntity){
+    clearBoard();
+    clearSelectedInfo();
+    selectedID = -1;
+    $('.hovered-entity-info').css('display', 'none');
+    return;
+  }
+
+  // 
+  $('#entity' + squares[squareID].id).css('background', '#FFE99B');
+  $('.hover-info-action').html('');
+  $('.hover-info-selected').css('opacity', '1')
+  $('.hover-info-selected-type').html(squares[squareID].type);
+  if(entity.owner == 0) {
+    if(teamTurn == 0) colorActionSquares(squareID, 1);
+    $('.hover-info-selected-allegiance').html('Friendly');
+    $('.hover-info-selected-allegiance').css('color', '#0f0')
+  } else {
+    $('.hover-info-selected-allegiance').html('Enemy');
+    $('.hover-info-selected-allegiance').css('color', '#f00')
+  }
+
+  if(entity.type == "Healer"){
+    $('.hover-info-selected-action').css('background', 'url("/images/heal.png")');
+  } else {
+    $('.hover-info-selected-action').css('background', 'url("/images/target.png")');
+  }
+  $('.hover-info-selected-health').css('background', 'url("/images/heart.png")');
+  $('.hover-info-selected-actions').css('background', '#FFE99B');
+  $('.hover-info-selected-movement').css('background', '#AEDCE5');
+  $('.hover-info-selected-actions').css('border-radius', '50%');
+  $('.hover-info-selected-movement').css('border-radius', '50%');
+  $('.hover-info-selected-actions').css('border', '1px solid black');
+  $('.hover-info-selected-movement').css('border', '1px solid black');
+
+  $('.hover-info-selected-action').html(entity.actionAmount);
+  $('.hover-info-selected-health').html(entity.health);
+  $('.hover-info-selected-actions').html(entity.action);
+  $('.hover-info-selected-movement').html(entity.movement);
+}
+
+// Right clicked square
+function altClick(squareID){
+  if(teamTurn != 0) return;
+
+  if(moveableSquareIDs.indexOf(squareID) != -1){
+    console.log("MOVE");
+    move(squares[selectedID], squareID);
+    clearSelectedInfo();
+    clickedEntity(squares[squareID].id);
+  }
+}
+
+// Right clicked an entity
+function altClickedEntity(entityID){
+  if(teamTurn != 0) return;
+  // Get square ID
+  var selectedEntity = squares[selectedID];
+  var targetEntity = getEntityFromElementID("entity"+entityID);
+
+  if(actionableSquareIDs.indexOf(6*(targetEntity.y-1)+(targetEntity.x-1)) != -1){
+    if(selectedEntity.owner == 0 && targetEntity.owner != 0 && selectedEntity.actionType != 'Heal') {
+
+      console.log("ATTACK");
+
+      attack(selectedEntity, targetEntity);
+
+      $('.hover-info-hovered-health').html(targetEntity.health);
+
+    } else if(selectedEntity.owner == 0 && targetEntity.owner == 0 && selectedEntity.actionType == 'Heal') {
+
+      if(targetEntity.health >= targetEntity.maxHealth) { $('.hover-info-action').html("This unit is already full health"); return; }
+
+      console.log("HEAL");
+      targetEntity.health = targetEntity.health + selectedEntity.actionAmount;
+      if(targetEntity.health > targetEntity.maxHealth) { targetEntity.health = targetEntity.maxHealth; }
+
+      $('#entity'+targetEntity.id+'health').css('width', (targetEntity.health/targetEntity.maxHealth*100)+'%');
+
+      $('.hover-info-hovered-health').html(targetEntity.health);
+
+      squares[selectedID].action--;
+    }
+
+    clickedEntity(selectedEntity.id);
+  }
+}
+    
+// Colors squares where this selected entity can take action (move, attack, heal etc)
+function colorActionSquares(squareID, range) {
+  var surroundingSquareIDs = getSurroundingSquareIDs(squareID, range);
+
+  for(i = 0; i < surroundingSquareIDs.length; i++) {
+    var surroundingSquareID = surroundingSquareIDs[i];
+    var entity = squares[surroundingSquareID];
+
+    if(entity == null) { // No entity
+      if(squares[selectedID].movement > 0) {
+        $('#'+surroundingSquareID).css('background', '#AEDCE5');
+        $('#'+surroundingSquareID).css('cursor', 'url("/images/cursor_walk.png") 14 14, auto');
+        moveableSquareIDs.push(surroundingSquareID);
+      }
+
+    } else if(entity.owner == 0) { // Friendly
+
+      if(squares[selectedID].type == 'Healer') { // if we have a healer selected make friends green and add them to actions
+        if(squares[selectedID].action > 0) {
+          $('#entity'+entity.id).css('background', '#FFC1C1');
+          $('#entity'+entity.id).css('cursor', 'url("/images/cursor_heal.png") 14 14, auto');
+          actionableSquareIDs.push(surroundingSquareID);
+
+        } else if(squares[selectedID].movement > 0) {
+          $('#entity'+entity.id).css('background', '#83A7AD');
+          $('#entity'+entity.id).css('cursor', 'url("/images/cursor_walk_cross.png") 14 14, auto');
+        }
+
+      } else {
+        if(squares[selectedID].movement > 0) {
+          $('#entity'+entity.id).css('background', '#83A7AD');
+          $('#entity'+entity.id).css('cursor', 'url("/images/cursor_walk_cross.png") 14 14, auto');
+        }
+      }
+
+    } else if(entity.owner == 1) { // Enemy
+
+      if(squares[selectedID].type == 'Healer') { // if we have a healer selected make enemies darkened and add them to actions
+        $('#entity'+entity.id).css('background', '#83A7AD');
+        $('#entity'+entity.id).css('cursor', 'url("/images/cursor_attack_cross.png") 14 14, auto');
+
+      } else {
+        if(squares[selectedID].action > 0) {
+          $('#'+surroundingSquareID).css('background', '#F00');
+          $('#entity'+entity.id).css('background', '#FF7F7F');
+          $('#entity'+entity.id).css('cursor', 'url("/images/cursor_attack.png") 14 14, auto');
+          actionableSquareIDs.push(surroundingSquareID);
+
+        } else if(squares[selectedID].movement > 0) {
+          $('#entity'+entity.id).css('background', '#83A7AD');
+          $('#entity'+entity.id).css('cursor', 'url("/images/cursor_walk_cross.png") 14 14, auto');
+        }
+      }
+
+    }
+  }
+}
+
+// ACTION FUNCTIONS
+
+// Attack an enemy entity
+function attack(entity, target) {
+  target.health = target.health - entity.actionAmount;
+  entity.action--;
+  var top = entityElements[entity.id].css('top').substring(0, entityElements[entity.id].css('top').length-2);
+  entityElements[entity.id].css('transition', 'top 0.1s, left 0.1s, background 0.2s');
+  entityElements[entity.id].css('top', (parseFloat(top)+5)+'px');
+  
+  
+  setTimeout(function(){ entityElements[entity.id].css('top', top+'px'); setTimeout(function(){ entityElements[entity.id].css('transition', 'top 0.3s, left 0.3s, background 0.2s'); }, 100); }, 100);
+
+  $('#entity'+target.id+'health').css('width', (target.health/target.maxHealth*100)+'%');
+
+  if(target.health < 1) { // If dead
+    entityDied(target);
+  }
+}
+
+// If we attacked an entity and it died
+function entityDied(entity){
+  // Hide element
+  entityElements[entity.id].css('display', 'none');
+  // Set board square as empty
+  squares[6*(entity.y-1)+(entity.x-1)] = null;
+  // Remove from teams units
+  teamUnitCounts[entity.owner].splice(teamUnitCounts[entity.owner].indexOf(entity), 1);
+  // Check if round over
+  if(teamUnitCounts[entity.owner].length == 0) {
+    console.log("Team " + entity.owner + " has lost the battle")
+  }
+}
+
+// Moves the entity
+function move(entity, moveTo) {
+  entity.movement--;
+  if(squares[moveTo] != null) { console.log("ERROR: CAN'T MOVE THERE"); return null; }
+
+  var x = moveTo % 6;
+  var y = Math.floor(moveTo / 6);
+
+  $('#'+selectedID+'inner').css('background', '');
+  entityElements[entity.id].css('left', (80*x+5)+"px");
+  entityElements[entity.id].css('top', (80*y+5)+"px");
+
+  squares[moveTo] = entity;
+  squares[6*(entity.y-1)+(entity.x-1)] = null;
+
+  squares[moveTo].x = x + 1;
+  squares[moveTo].y = y + 1;
+
+  return 1;
+}
+
+
+/* TURN FUNCTIONS */
+
+function endTurn() {
+  if(teamTurn == 0) {
+    clearBoard();
+    clearSelectedInfo();
+
+    teamTurn = 1;
+    $('.hover-info-team-turn').html("Enemy turn");
+    $('.end-turn').css('display', 'none');
+    resetAllEntities(teamTurn);
+
+    setTimeout(function(){ AI(teamTurn); }, 500);
+
+  } else {
+    teamTurn = 0;
+    $('.hover-info-team-turn').html("Your turn");
+    $('.end-turn').css('display', 'initial');
+    resetAllEntities(teamTurn);
+
+    if(squares[selectedID]) clickedEntity(squares[selectedID].id);
+  }
+}
+
+function resetAllEntities(team) {
+  var entities = teamUnitCounts[team];
+  for(i = 0; i < entities.length; i++){
+    entities[i].action = entities[i].maxAction;
+    entities[i].movement = entities[i].maxMovement;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Welcome to #{title}!
+  a(href="/") Back
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+
+    
+    
+    

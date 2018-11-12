@@ -1,0 +1,124 @@
+extends layout
+
+append styles
+    link(rel='stylesheet', href='/stylesheets/websites.css')
+
+block content
+
+  .website-text
+    span Choose a website on the left to begin
+  .content-container
+    iframe.website(id="frame" src="" width="100%" height="100%")
+
+  .toolbar
+
+    img.toolbar-logo(src="/images/BeRD_logo_websites.png")
+
+    .toolbar-inner
+      .toolbar-inner-website(id="website0" onclick="openWebpage(0)")
+        .toolbar-inner-website-ghost
+        .toolbar-inner-website-img(style="background-image: url('/images/ledger.png');")
+        span Ledger Real Estate
+
+      .toolbar-inner-website(id="website1" onclick="openWebpage(1)")
+        .toolbar-inner-website-ghost
+        .toolbar-inner-website-img(style="background-image: url('/images/dinz.png');")
+        span DINZ
+
+      .toolbar-inner-website(id="website2" onclick="openWebpage(2)")
+        .toolbar-inner-website-ghost
+        .toolbar-inner-website-img(style="background-image: url('/images/this.png');")
+        span This Website
+
+    .toolbar-menu-holder
+      .toolbar-menu-item(onclick="clickedNavButton('/')")
+        span Home
+      .toolbar-menu-item(onclick="clickedNavButton('/websites')")
+        span Websites
+      .toolbar-menu-item(onclick="clickedNavButton('/projects')")
+        span Projects
+      .toolbar-menu-item(onclick="clickedNavButton('/blog')")
+        span Blog
+
+    .toolbar-title-holder
+      span.toolbar-title Websites
+      .toolbar-menu-button(onclick="menuButtonClicked()")
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+
+  span.toolbar-hideShow(onclick="hideShow()") Hide
+  
+
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+
+    // On page load animations
+     
+    // Toolbar animation
+    setTimeout(function(){ $(".toolbar").css("transform", "translate(300px, 0px)"); $(".website").css("width", "100%"); }, 0);
+     
+    // Website holder text and logo animation
+    setTimeout(function(){ $(".website-text").css("transform", "translate(0px, "+(window.innerHeight/4)+"px)");}, 300);
+
+    function hideShow(){
+      if($(".toolbar").css("transform") == 'none'){ 
+        $(".toolbar").css("transform", "translate(300px, 0px)"); 
+        $(".toolbar-hideShow").html("Hide");
+        $(".website").css("width", "100%");
+ 
+      } else { 
+        $(".toolbar").css("transform", ""); 
+        $(".toolbar-hideShow").html("Show"); 
+        $(".website").css("width", window.innerWidth); 
+      }
+      
+    }
+
+    function clickedNavButton(url) {
+     
+      // Toolbar return animation
+      $(".toolbar").css("transform", ""); 
+      $(".website").css("width", "calc(100% + 300px)");
+     
+      // Website holder and text return animation
+      $(".website-text").css("transform", "");
+      $(".website").css("opacity", "0");
+      
+      window.location.assign(url);
+    }
+
+    var currentWebpage = '';
+
+    function openWebpage(webpageID){
+      $(".toolbar-inner-website").css("color", ""); 
+      $(".toolbar-inner-website").css("background", ""); 
+      $("#website"+webpageID).css("color", "white"); 
+      $("#website"+webpageID).css("background", "#8AB269"); 
+
+      $(".website-text").css("transform", ""); 
+      $(".content-container").css("opacity", "0"); 
+      setTimeout(function(){ 
+          if(webpageID == 0) {
+            $("#frame").attr("src", "http://tec.co.nz:3000/");
+          } else if(webpageID == 1) {
+            $("#frame").attr("src", "http://tec.co.nz/");
+          } else if(webpageID == 2) {
+            $("#frame").attr("src", "http://tec.co.nz:3060/");
+          }
+        }, 300);
+      setTimeout(function(){ 
+          $(".content-container").css("opacity", "1");
+        }, 1000);
+    }
+
+    function menuButtonClicked(){
+      if($('.toolbar-menu-holder').css('transform') == 'none') {
+        $('.toolbar-menu-holder').css('transform', 'translate(0px, 100%)');
+      } else {
+        $('.toolbar-menu-holder').css('transform', '');
+      }
+    }
+    
+    

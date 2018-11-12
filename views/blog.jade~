@@ -1,0 +1,142 @@
+extends layout
+
+append styles
+    link(rel='stylesheet', href='/stylesheets/blog.css')
+
+block content
+  .toolbar
+
+    img.toolbar-logo(src="/images/BeRD_logo_blog.png")
+
+    .toolbar-inner
+      - for (var i = 0; i < 8; ++i) {
+        .toolbar-post(id="post#{i}" onclick="openBlog(#{i})")
+          span Blog Post
+          br
+          span(style="font-size: 14px;") 00/00/17
+      - }
+
+    .toolbar-menu-holder
+      .toolbar-menu-item(onclick="clickedNavButton('/')")
+        span Home
+      .toolbar-menu-item(onclick="clickedNavButton('/websites')")
+        span Websites
+      .toolbar-menu-item(onclick="clickedNavButton('/projects')")
+        span Projects
+      .toolbar-menu-item(onclick="clickedNavButton('/blog')")
+        span Blog
+
+    .toolbar-title-holder
+      span.toolbar-title Blog
+      .toolbar-menu-button(onclick="openCloseMenu()")
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+
+  .content-container(id="contentContainer")
+    .post-holder
+      .post-title
+        span Blog Post Title
+
+      .post-main-image
+
+      .post-name-date
+        span Ben Remnant
+        br
+        span(style="font-size: 17px;") 00/00/17
+
+      .post-content
+        span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget mattis erat. Praesent id dapibus odio. Nullam vel leo ex. Aliquam erat volutpat. Nulla nisl quam, tempus ut eros a, rhoncus dignissim nulla. Mauris elementum iaculis arcu, sed vehicula urna commodo semper. Integer tincidunt blandit est. Aliquam ac felis vel turpis viverra finibus. Nulla gravida commodo viverra. Phasellus ac varius lacus. Pellentesque id aliquet urna, et iaculis urna. Etiam porttitor ligula mattis nunc tempus consectetur. Proin ullamcorper elit iaculis massa efficitur, non congue ipsum rutrum. Curabitur in nulla ornare, posuere tortor ac, condimentum ex. Morbi quam ipsum, pellentesque non justo in, sagittis mollis nisi. Donec gravida ut turpis sed malesuada. Nullam aliquet libero at tincidunt placerat. Vivamus mi nunc, mattis sed tempus id, consectetur quis orci. 
+        br
+        br
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros nibh, cursus ac mi et, blandit sollicitudin est. Nam pulvinar erat eu nisi consectetur, vel cursus sapien ornare. Mauris bibendum odio sed sem sodales sagittis. Vestibulum nisi massa, dapibus non mauris nec, molestie dictum eros. Curabitur elementum nulla a orci consequat pulvinar. Proin aliquet vitae ante et placerat. Donec eu elementum nulla, quis tristique ex. Integer vulputate sollicitudin placerat. Praesent tincidunt leo id ipsum convallis iaculis. Suspendisse velit diam, semper eu metus vel, ornare gravida diam. Aliquam lacus libero, tristique id justo ut, tristique congue odio. Morbi elementum massa vitae imperdiet rutrum. Pellentesque pellentesque leo non felis maximus vestibulum. Morbi urna tellus, dapibus vel tortor quis, tempus condimentum tortor. Fusce at rhoncus nisl, vitae commodo dolor. Fusce blandit ultrices lectus, lobortis bibendum sapien blandit faucibus. 
+        br
+        br
+        span Sed nec dictum nulla, eu consectetur ex. Vivamus id nibh venenatis, consequat lectus a, aliquet ex. Vivamus gravida sagittis sapien, ac sodales ante malesuada et. Sed placerat fermentum est, tristique tempus tellus fringilla non. Vivamus rhoncus ac magna vitae dignissim. Pellentesque imperdiet libero nisl. Etiam in odio consectetur, gravida purus vel, bibendum urna. Sed et turpis nibh. Morbi ullamcorper turpis velit, id tristique ex dignissim at. Suspendisse nec velit vitae nibh pellentesque dignissim in rutrum justo. Sed eleifend odio orci, a mollis magna consequat a. Vestibulum aliquet dui ut eleifend maximus. Nam ut erat in nisl tempus eleifend. Donec ullamcorper urna nec pretium interdum. Proin sollicitudin odio in augue consectetur blandit. Donec suscipit dui efficitur libero tincidunt commodo a ut lorem. Donec quis ligula dapibus, tincidunt ante quis, feugiat metus. Aenean quis magna urna. Pellentesque ut eros purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer at nisi quis ex vestibulum mollis vitae tincidunt lectus. Donec blandit arcu elit, sit amet sagittis lorem eleifend quis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec non turpis ultrices, viverra ipsum eu, varius lacus. Nunc interdum lacus vitae velit gravida pellentesque. Sed pretium nulla quis nisl fringilla ultricies. Fusce ante erat, blandit nec consequat at, faucibus id felis. Ut at risus eu turpis malesuada tincidunt. Vivamus lectus ex, maximus rutrum diam ut, cursus pellentesque felis.
+
+      .div(style="max-width: 1000px; margin: 0 auto;")
+        .post-prev
+          span < Prevoius
+
+        .post-next
+          span Next >
+    br
+    br
+    br
+    br
+
+  span.toolbar-hideShow(onclick="hideShow()") Hide
+
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+     
+    // Toolbar animation
+    setTimeout(function(){ $(".toolbar").css("transform", "translate(300px, 0px)"); }, 0);
+     
+    // Post holder and post selected animation
+    setTimeout(function(){ 
+      $(".content-container").css("transform", "translate(0px, -100%)"); 
+      $("#post"+0).css("color", "white"); 
+      $("#post"+0).css("background", "#EF7D67");  
+     }, 400);
+
+    function openBlog(postID){
+      $(".toolbar-post").css("background", ""); 
+      $(".toolbar-post").css("color", ""); 
+      $("#post"+postID).css("color", "white"); 
+      $("#post"+postID).css("background", "#EF7D67"); 
+
+      if(postID == 0){
+        $(".content-container").css("transform", "");
+        setTimeout(function(){ 
+            document.getElementById('contentContainer').scrollTop = 0;
+            // TODO: Change text
+            $(".content-container").css("transform", "translate(0px, -100%)"); 
+          }, 800);
+
+      } else {
+        $(".content-container").css("transform", "");
+        setTimeout(function(){ 
+            document.getElementById('contentContainer').scrollTop = 0;
+            // TODO: Change text
+            $(".content-container").css("transform", "translate(0px, -100%)"); 
+          }, 800);
+      }
+    }
+
+    function clickedNavButton(url) {
+      // Toolbar return animation
+      $(".toolbar").css("transform", ""); 
+     
+      // Post holder return animation
+      $(".content-container").css("transform", "");
+      
+      window.location.assign(url);
+    }
+
+    // Opened and closes the navigation menu at the top of the toolbar
+    function openCloseMenu(){
+      if($('.toolbar-menu-holder').css('transform') == 'none') {
+        $('.toolbar-menu-holder').css('transform', 'translate(0px, 100%)');
+      } else {
+        $('.toolbar-menu-holder').css('transform', '');
+      }
+    }
+
+    // Hides and shows the toolbar
+    function hideShow(){
+      if($(".toolbar").css("transform") == 'none'){ 
+        $(".content-container").css("width", "calc(100% - 300px)");
+        $(".toolbar").css("transform", "translate(300px, 0px)"); 
+        $(".toolbar-hideShow").html("Hide");
+      } else { 
+        $(".content-container").css("width", "100%");
+        $(".toolbar").css("transform", ""); 
+        $(".toolbar-hideShow").html("Show"); 
+      }
+    }
+
+    
+    
+    

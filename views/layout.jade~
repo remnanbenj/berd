@@ -1,0 +1,8 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+
+append styles
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Aldrich')
+
+append body
+    block content

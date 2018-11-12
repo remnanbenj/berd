@@ -1,0 +1,232 @@
+.page-container {
+  background: orange;
+  height: 100%;
+  position: relative;
+}
+
+.game-container {
+  width: 480px;
+  position: absolute;
+  top: 30px;
+  left: calc(-240px + 50%);
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+}
+
+.game-square {
+  position: relative;
+  background: white;
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin: 5px;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+.game-square-entity {
+  position: absolute;
+  top: 405px;
+  left: 405px;
+  width: 70px;
+  height: 70px;
+  background: white;
+  cursor: pointer;
+  -webkit-transition: top 0.3s, left 0.3s, background 0.2s;
+  transition: top 0.3s, left 0.3s, background 0.2s;
+}
+
+.game-square-entity-image {
+  margin: 20px;
+  width: 30px;
+  height: 30px;
+  background: white;
+}
+
+.game-square-entity-playerColor {
+  position: relative;
+  top: -5px;
+  left: 0px;
+  height: 5px;
+}
+
+.game-square-entity-playerColor-inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.hover-info-selected {
+  position: absolute;
+  top: 545px;
+  left: calc(-260px + 50%);
+  width: 250px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+}
+
+.hover-info-hovered {
+  position: absolute;
+  top: 545px;
+  left: calc(10px + 50%);
+  width: 250px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+}
+
+.hover-info-hovered-type, .hover-info-selected-type {
+  font-size: 21px;
+}
+
+.hover-info-hovered-allegiance, .hover-info-selected-allegiance {
+  font-size: 17px;
+}
+
+.hover-info-hovered-action, .hover-info-selected-action {
+  background: url('/images/target.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+  padding-top: 4px;
+  text-shadow: 1px 1px 1px #000;
+  cursor: default;
+}
+
+.hover-info-hovered-health, .hover-info-selected-health {
+  background: url('/images/heart.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+  padding-top: 4px;
+  text-shadow: 1px 1px 1px #000;
+  cursor: default;
+}
+
+.hover-info-hovered-actions, .hover-info-selected-actions {
+  background: url('/images/heart.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+  padding-top: 4px;
+  text-shadow: 1px 1px 1px #000;
+  cursor: default;
+}
+
+.hover-info-hovered-movement, .hover-info-selected-movement {
+  background: url('/images/heart.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+  padding-top: 4px;
+  text-shadow: 1px 1px 1px #000;
+  cursor: default;
+}
+
+.hover-info-action {
+  position: absolute;
+  top: 520px;
+  left: 0px;
+  width: 100%;
+  font-size: 17px;
+  text-align: center;
+  color: white;
+}
+
+.hover-info-team-turn {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 100%;
+  font-size: 17px;
+  text-align: center;
+  color: white;
+}
+
+.end-turn {
+  position: absolute;
+  top: 0px;
+  right: -145px;
+  width: 140px;
+  height: 40px;
+  background: rgba(0,0,0,0.3);
+  font-size: 17px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.end-turn:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+.hovered-entity-info {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  width: 180px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 3px;
+  z-index: 20;
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

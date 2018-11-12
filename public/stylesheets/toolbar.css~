@@ -1,0 +1,154 @@
+.toolbar {
+  background: white;
+  overflow: auto;
+  box-shadow: 1px 1px 1px 1px #ccc;
+
+  position: fixed;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+
+  -webkit-transition: transform 0.5s;
+  transition: transform 0.5s;
+}
+
+.toolbar-logo {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.toolbar-hideShow {
+  /*color: VARIABLE;
+  border-bottom: 1px solid VARIABLE;*/
+
+  cursor: pointer;
+
+  position: fixed;
+  bottom: 7px;
+  left: 7px;
+  width: 70px;
+  height: 26px;
+
+  font-size: 19px;
+  text-align: center;
+  padding-top: 3px;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  -webkit-transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s;
+}
+
+.toolbar-hideShow:hover {
+  /*background: VARIABLE;*/
+  color: white;
+}
+
+/* toolbar title */
+
+.toolbar-title-holder {
+  position: relative;
+  background: white;
+  height: 46px;
+  padding-top: 5px;
+}
+
+.toolbar-title {
+  /*color: VARIABLE;*/
+  display: block;
+  font-size: 31px;
+  margin-left: 8px;
+}
+
+.toolbar-menu-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 40px;
+  height: 38px;
+  margin-top: 3px;
+  margin-right: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+.toolbar-menu-button:hover {
+  /*background: VARIABLE;*/
+}
+
+.toolbar-menu-button-burger {
+  /*box-shadow: 0px 0px 1px 1px VARIABLE;*/
+  background: white;
+  width: 80%;
+  height: 5px;
+  margin: 0 auto;
+  margin-top: 6px;
+}
+
+/* toolbar menu */
+
+.toolbar-menu-holder {
+  /*border-bottom: 1px solid VARIABLE;*/
+  position: absolute;
+  top: -162px;
+  right: 0px;
+  background: white;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+}
+
+.toolbar-menu-item {
+  /*color: VARIABLE;
+  border-bottom: 1px solid VARIABLE;*/
+
+  margin: 0 auto;
+  margin-bottom: 12px;
+  height: 40px;
+  width: 80%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  text-align: center;
+  padding-top: 8px;
+  cursor: pointer;
+  font-size: 19px;
+  -webkit-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+
+.toolbar-menu-item:hover {
+  /*background: VARIABLE;*/
+  color: white;
+}
+
+/* toolbar inner */
+
+.toolbar-inner {
+  /*border-top: 1px solid #EF7D67;
+  border-bottom: 1px solid #EF7D67;*/
+  position: absolute;
+  top: 46px;
+  height: calc(100% - 85px);
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 15px;
+}
+
+.content-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  overflow-y: auto;
+
+  height: 100%;
+  width: calc(100% - 300px);
+
+  -webkit-transition: transform 0.6s, opacity 0.6s, width 0.6s;
+  transition: transform 0.6s, opacity 0.6s, width 0.6s;
+}

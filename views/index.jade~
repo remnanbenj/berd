@@ -1,0 +1,80 @@
+extends layout
+
+block content
+  .div(style="text-align: center; margin-top: -130px;")
+    span.welcome-to Welcome to
+    span.BeRD Ben Remnant Design
+    br
+    img.BeRD-logo(src="/images/BeRD_logo.png")
+  
+  .homepage-button-holder
+    .col-md-4
+      .homepage-button(onclick="clickedButton('/websites')")
+        .homepage-button-inner(style="background: url('/images/websites_button.png');")
+        span.homepage-button-label Websites
+
+    .col-md-4
+      .homepage-button(onclick="clickedButton('/projects')")
+        .homepage-button-inner(style="background: url('/images/projects_button.png');")
+        span.homepage-button-label Projects
+
+    .col-md-4
+      .homepage-button(onclick="clickedButton('/blog')")
+        .homepage-button-inner(style="background: url('/images/blog_button.png');")
+        span.homepage-button-label Blog
+    br
+    br
+    br
+
+  .homepage-footer-holder
+    span.homepage-footer-button(onclick="clickedButton('/about')") About Me
+    span &nbsp;&nbsp;&nbsp;&nbsp;
+    span.homepage-footer-button(onclick="clickedButton('/game')") Games
+
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+
+    // On page load animations
+
+    // Title animations
+    setTimeout(function(){if(window.innerWidth > 700) $(".BeRD-logo").css("transform", "translate(0px, 200px)"); else $(".BeRD-logo").css("transform", "translate(0px, 130px)");}, 0);
+    setTimeout(function(){if(window.innerWidth > 700) $(".BeRD").css("transform", "translate(0px, 220px)"); else $(".BeRD").css("transform", "translate(0px, 150px)");}, 150);
+    setTimeout(function(){if(window.innerWidth > 700) $(".welcome-to").css("transform", "translate(0px, 220px)"); else $(".welcome-to").css("transform", "translate(0px, 150px)");}, 250);
+
+    // Button animations
+    setTimeout(function(){$(".homepage-button-holder").css("transform", "translate(0px, -30px)");}, 300);
+    setTimeout(function(){$(".homepage-button").css("opacity", "1");}, 300);
+
+    // Footer animations
+    setTimeout(function(){if(window.innerWidth > 700) $(".homepage-footer-holder").css("transform", "translate(0px, -30px)");}, 500);
+    setTimeout(function(){$(".homepage-footer-button").css("opacity", "1");}, 500);
+
+    function clickedButton(url) {
+
+      // Title return animations
+      $(".welcome-to").css("transform", "");
+      setTimeout(function(){
+          $(".BeRD").css("transform", "");
+          $(".welcome-to").css("opacity", "0");
+          $(".BeRD").css("opacity", "0");
+        }, 100);
+      setTimeout(function(){
+          $(".BeRD-logo").css("transform", "");
+          $(".BeRD-logo").css("opacity", "0");
+        }, 200);
+
+      // Button return animations
+      $(".homepage-button-holder").css("transform", "");
+      $(".homepage-button").css("opacity", "0");
+
+      // Footer return animations
+      $(".homepage-footer-holder").css("transform", "");
+      $(".homepage-footer-button").css("opacity", "0");
+
+      window.location.assign(url);
+    }
+
+    
+    
+    

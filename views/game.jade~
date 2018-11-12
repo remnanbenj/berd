@@ -1,0 +1,61 @@
+extends layout
+
+append styles
+    link(rel='stylesheet', href='/stylesheets/game.css')
+
+block content
+  .page-container(onclick="clearBoard(); clearSelectedInfo()" oncontextmenu="return false;")
+  .game-container(oncontextmenu="return false;")
+      - for(i = 0 ; i < 36; i++) {
+        .game-square(id="#{i}" onclick="clicked(#{i})" oncontextmenu="altClick(#{i}); return false;")
+      - }
+      .end-turn(onclick="endTurn()") End Turn
+
+      .hovered-entity-info
+        span.hovered-entity-info-type(style="absolute; top: 0px; left: 0px; color: black; font-size: 17px; display: block; text-align: left; background: orange; margin-bottom: 3px;") &nbsp;Warrior
+
+        span.hovered-entity-info-action(style="position: absolute; top: 0px; right: 55px; color: black; font-size: 14px; display: block;") 3 
+        img(style="position: absolute; top: 2px; right: 40px; display: inline-block; height: 13px;" src="/images/cursor_attack.png") 
+
+        span.hovered-entity-info-health(style="position: absolute; top: 0px; right: 19px; color: black; font-size: 14px;") 8 
+        img(style="position: absolute; top: 3px; right: 5px; display: inline-block; height: 13px;" src="/images/heart.png") 
+
+        span.hovered-entity-info-movement 1 attack remaining
+        br
+        span.hovered-entity-info-actions 1 movement remaining
+
+  .hover-info-action
+  .hover-info-team-turn Your turn
+
+  .hover-info-selected(onclick="clearBoard(); clearSelectedInfo()" oncontextmenu="return false;")
+    .hover-info-selected-type
+    .hover-info-selected-allegiance
+    br
+    .hover-info-selected-health(data-toggle="tooltip" title="Health")
+    .hover-info-selected-action(data-toggle="tooltip" title="Damage")
+    .hover-info-selected-movement(data-toggle="tooltip" title="Movement")
+    .hover-info-selected-actions(data-toggle="tooltip" title="Actions")
+
+  .hover-info-hovered(onclick="clearBoard(); clearSelectedInfo()" oncontextmenu="return false;")
+    .hover-info-hovered-type
+    .hover-info-hovered-allegiance
+    br
+    .hover-info-hovered-health
+    .hover-info-hovered-action
+    .hover-info-hovered-movement
+    .hover-info-hovered-actions
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script(src="/javascripts/utility.js").
+  script(src="/javascripts/game.js").
+  script(src="/javascripts/hover.js").
+  script(src="/javascripts/ai.js").
+  script.
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    
+ 
+    
+    
+    
