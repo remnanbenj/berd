@@ -1,0 +1,107 @@
+extends layout
+
+block content
+
+  .content-container(id="contentContainer" style="left: 300px;")
+    iframe.website(id="frame" src="" width="100%" height="100%")
+
+  .toolbar-show(onclick="show()")
+    .glyphicon.glyphicon-arrow-right
+
+  .toolbar
+
+    .toolbar-content
+
+      .toolbar-content-item(id="post0" onclick="openPost(0, 800)")
+        .toolbar-content-item-img(id="post0img" style="background-image: url('/images/dinz.png');")
+        span(id="post0title") DINZ
+
+      .toolbar-content-item(id="post1" onclick="openPost(1, 800)")
+        .toolbar-content-item-img(id="post1img" style="background-image: url('/images/BeRD-home_page.png');")
+        span(id="post1title") This Website
+
+    .toolbar-menu-holder
+      .toolbar-menu-item(onclick="clickedNavButton('/')")
+        span Home
+      .toolbar-menu-item(onclick="clickedNavButton('/websites')")
+        span Websites
+      .toolbar-menu-item(onclick="clickedNavButton('/projects')")
+        span Projects
+      .toolbar-menu-item(onclick="clickedNavButton('/about')")
+        span About Me
+
+    .toolbar-title-holder
+      span.toolbar-title Websites
+      .toolbar-home(onclick="clickedNavButton('/')")
+        .glyphicon.glyphicon-home
+      //-.toolbar-menu-button(onclick="openCloseMenu()")
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+        .toolbar-menu-button-burger
+
+    .toolbar-logo(style="background-image: url('images/websites_button.png');")
+    .toolbar-hide(onclick="hide()")
+      .glyphicon.glyphicon-arrow-left
+
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+     
+    // Toolbar and content opening animations
+    setTimeout(function(){ $(".toolbar").css("transform", "translate(300px, 0px)"); }, 0);
+    setTimeout(function(){ openPost(0, 400); }, 0);
+
+    var randomText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin ante id arcu ultricies, quis vehicula massa condimentum. Duis imperdiet purus magna. Sed vel nisl sagittis, vestibulum justo sed, dictum lorem. Quisque placerat mollis nibh nec varius. Aenean a semper augue. Cras porta justo vel lorem egestas, pellentesque ultrices purus malesuada. Maecenas lacinia enim vitae neque lacinia, a cursus augue ullamcorper. Curabitur vehicula turpis a lorem aliquam, eget luctus enim congue. Donec eget posuere magna, non pharetra risus. Nunc suscipit malesuada ex, vitae tincidunt ipsum accumsan quis. Proin vitae odio nunc. Sed ac finibus turpis. Cras vestibulum ex sed est pulvinar, ac rutrum mauris dictum. Nulla sit amet interdum neque.";
+    randomText += "<br><br>Sed viverra ultricies convallis. Vivamus erat turpis, gravida sed tempus vel, tempor blandit quam. Ut luctus imperdiet eros ut bibendum. Donec orci lectus, dictum eget nulla sit amet, hendrerit fermentum arcu. Duis id tincidunt nisl. Aliquam pretium magna tellus, eget laoreet leo fringilla nec. Duis gravida lacus non massa mattis blandit. Aenean varius molestie ante, at pretium arcu. Morbi rutrum vel lectus in ullamcorper. Morbi blandit est sed metus congue, eget blandit dui semper. Vivamus a eros augue. Aenean nec tristique augue, at malesuada tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque ullamcorper nec leo in aliquet.";
+    randomText += "<br><br>Mauris ligula neque, varius sed dapibus eu, rhoncus et nibh. Praesent et mattis urna, quis auctor risus. Ut scelerisque ex in nunc malesuada, nec tristique diam lobortis. Sed mollis posuere libero, id vehicula mi blandit et. Cras non nulla velit. Nullam nunc nisi, convallis eu tellus quis, viverra placerat justo. Fusce condimentum auctor neque non cursus. Nunc lacus lectus, aliquet et sodales in, ornare et tortor. Pellentesque sagittis vehicula varius. Sed pulvinar lobortis lectus, eu aliquam tellus pellentesque eget. Cras posuere ultrices tincidunt. Curabitur eget magna dignissim, malesuada nisi eget, accumsan massa. Etiam viverra nisl eleifend, molestie erat sit amet, hendrerit quam. Morbi massa ex, aliquet eget tortor vel, molestie suscipit augue. Pellentesque a est dui.";
+    randomText += "<br><br>Nam cursus mi quis ante sodales venenatis. Integer fermentum mattis est non mollis. Etiam tincidunt commodo aliquet. Praesent eleifend lacus ac dolor scelerisque, in hendrerit quam dapibus. Maecenas nulla est, volutpat vitae venenatis consectetur, cursus vel est. Integer malesuada non ex efficitur dapibus. Integer in dignissim eros. Aliquam at molestie nunc. Donec tincidunt ullamcorper varius.";
+    randomText += "<br><br>Vivamus dolor nisl, laoreet sit amet euismod nec, blandit a risus. Praesent vel orci eu neque maximus congue sed vitae mauris. Nam diam turpis, dignissim eu nulla ornare, sodales pharetra mauris. Sed dolor eros, scelerisque eu malesuada sit amet, placerat at sem. Vivamus at tincidunt magna. Phasellus ullamcorper risus eleifend congue placerat. Mauris pulvinar neque velit. Sed molestie nibh eget elit interdum, a molestie purus convallis. In condimentum mattis ex, quis congue magna dapibus et. Sed nibh lectus, accumsan id mi vitae, tincidunt malesuada sem. Aliquam lobortis lorem eget mi volutpat malesuada. Aliquam erat volutpat. Donec fermentum elit mattis, sollicitudin eros non, placerat purus. Sed nec ultrices nulla. Aenean vel efficitur ligula, vitae dapibus est. Pellentesque felis nulla, finibus ac diam at, suscipit accumsan dolor.";
+
+    // Opened post
+    function openPost(postID, speed){
+      $(".toolbar-content-item").css("background", "");
+      $(".toolbar-content-item").css("color", "");
+      $("#post"+postID).css("color", "white"); 
+      $("#post"+postID).css("background", "var(--main-color)");
+      $("#frame").attr("src", "about:blank");
+
+      setTimeout(function(){ 
+        if(postID == 0) $("#frame").attr("src", "http://tec.co.nz/");
+        else if(postID == 1) $("#frame").attr("src", "http://192.168.1.79/");
+      }, speed);
+
+    }
+
+    // Navigate elsewhere
+    function clickedNavButton(url) {
+      // Toolbar return animation
+      $(".toolbar").css("transform", "");
+     
+      // Post holder return animation
+      $("#frame").attr("src", "about:blank");
+      
+      setTimeout(function(){
+        window.location.assign(url);
+      }, 200);
+    }
+
+    // Opened and closes the navigation menu at the top of the toolbar
+    function openCloseMenu(){
+      if($('.toolbar-menu-holder').css('transform') == 'none') {
+        $('.toolbar-menu-holder').css('transform', 'translate(0px, 100%)');
+      } else {
+        $('.toolbar-menu-holder').css('transform', '');
+      }
+    }
+
+    // Hides and shows the toolbar
+    function hide(){
+      $(".content-container").css("width", "100%");
+      $(".content-container").css("left", "0px");
+      $(".toolbar").css("transform", ""); 
+    }
+    function show(){
+      $(".content-container").css("width", "calc(100% - 300px)");
+      $(".content-container").css("left", "300px");
+      $(".toolbar").css("transform", "translate(300px, 0px)"); 
+    }

@@ -1,112 +1,171 @@
-.toolbar {
-  background: white;
-  overflow: auto;
-  box-shadow: 1px 1px 1px 1px #ccc;
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url(https://fonts.googleapis.com/css?family=Aldrich);
 
-  position: fixed;
+.toolbar {
+  position: absolute;
   left: -300px;
   width: 300px;
   height: 100%;
+  overflow: auto;
 
+  background: var(--main-color);
   -webkit-transition: transform 0.5s;
   transition: transform 0.5s;
 }
 
 .toolbar-logo {
   position: absolute;
-  bottom: 5px;
-  right: 10px;
+  bottom: 0px;
+  left: 0px;
+  width: 81px;
+  height: 43px;
+  background-color: #fff;
+  background-image: url('/images/BeRD_logo_white.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.toolbar-hideShow {
-  /*color: VARIABLE;
-  border-bottom: 1px solid VARIABLE;*/
-
-  cursor: pointer;
-
-  position: fixed;
-  bottom: 7px;
-  left: 7px;
-  width: 70px;
-  height: 26px;
+.toolbar-home {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 36px;
+  height: 33px;
+  padding-top: 5px;
 
   font-size: 19px;
   text-align: center;
-  padding-top: 3px;
+  color: #fff;
 
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  cursor: pointer;
+  border-radius: 1px;
 
-  -webkit-transition: background 0.3s, color 0.3s;
-  transition: background 0.3s, color 0.3s;
+  -webkit-transition: background 0.1s, color 0.1s;
+  transition: background 0.1s, color 0.1s;
 }
 
-.toolbar-hideShow:hover {
-  /*background: VARIABLE;*/
-  color: white;
+.toolbar-home:hover {
+  background: #fff;
+  color: var(--main-color);
+}
+
+.toolbar-hide {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 36px;
+  height: 33px;
+  padding-top: 5px;
+
+  font-size: 19px;
+  text-align: center;
+  color: #fff;
+
+  cursor: pointer;
+  border-radius: 1px;
+
+  -webkit-transition: background 0.1s, color 0.1s;
+  transition: background 0.1s, color 0.1s;
+}
+
+.toolbar-hide:hover {
+  background: #fff;
+  color: var(--main-color);
+}
+
+.toolbar-show {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 36px;
+  height: 33px;
+  padding-top: 5px;
+
+  font-size: 19px;
+  text-align: center;
+  color: #fff;
+  background: var(--main-color);
+
+  cursor: pointer;
+  border-radius: 1px;
+
+  -webkit-transition: background 0.1s, color 0.1s;
+  transition: background 0.1s, color 0.1s;
+}
+
+.toolbar-show:hover {
+  background: #fff;
+  color: var(--main-color);
 }
 
 /* toolbar title */
 
 .toolbar-title-holder {
   position: relative;
-  background: white;
-  height: 46px;
+  background: var(--main-color);
+  height: 43px;
   padding-top: 5px;
 }
 
 .toolbar-title {
-  /*color: VARIABLE;*/
+  color: #fff;
   display: block;
-  font-size: 31px;
+  font-size: 1.8em;
   margin-left: 8px;
 }
 
 .toolbar-menu-button {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 40px;
-  height: 38px;
-  margin-top: 3px;
-  margin-right: 8px;
-  border-radius: 3px;
+  top: 5px;
+  right: 5px;
+  width: 36px;
+  height: 33px;
+  padding-top: 2px;
   cursor: pointer;
-  -webkit-transition: background 0.3s;
-  transition: background 0.3s;
+  border-radius: 1px;
+  -webkit-transition: background 0.1s;
+  transition: background 0.1s;
 }
 
 .toolbar-menu-button:hover {
-  /*background: VARIABLE;*/
+  background: #fff;
 }
 
 .toolbar-menu-button-burger {
-  /*box-shadow: 0px 0px 1px 1px VARIABLE;*/
-  background: white;
-  width: 80%;
-  height: 5px;
+  width: 26px;
+  height: 4px;
   margin: 0 auto;
-  margin-top: 6px;
+  margin-top: 4px;
+  background: #fff;
+  -webkit-transition: background 0.1s;
+  transition: background 0.1s;
+}
+
+.toolbar-menu-button:hover .toolbar-menu-button-burger {
+  background: var(--main-color);
 }
 
 /* toolbar menu */
 
 .toolbar-menu-holder {
-  /*border-bottom: 1px solid VARIABLE;*/
   position: absolute;
-  top: -202px;
+  top: -205px;
   right: 0px;
-  background: white;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+  border-right: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+  background: #fff;
   -webkit-transition: transform 0.2s;
   transition: transform 0.2s;
 }
 
 .toolbar-menu-item {
-  /*color: VARIABLE;
-  border-bottom: 1px solid VARIABLE;*/
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 
   margin: 0 auto;
   margin-bottom: 12px;
@@ -123,21 +182,21 @@
 }
 
 .toolbar-menu-item:hover {
-  /*background: VARIABLE;*/
+  background: var(--main-color);
   color: white;
 }
 
-/* toolbar inner */
+/* toolbar content */
 
-.toolbar-inner {
-  /*border-top: 1px solid #EF7D67;
-  border-bottom: 1px solid #EF7D67;*/
+.toolbar-content {
   position: absolute;
-  top: 46px;
-  height: calc(100% - 85px);
+  top: 43px;
   width: 100%;
-  overflow-y: auto;
+  height: calc(100% - 86px);
   padding-bottom: 15px;
+  overflow-y: auto;
+  background: white;
+  border-right: 1px solid var(--main-color);
 }
 
 .content-container {
@@ -151,4 +210,35 @@
 
   -webkit-transition: transform 0.6s, opacity 0.6s, width 0.6s;
   transition: transform 0.6s, opacity 0.6s, width 0.6s;
+}
+
+.toolbar-content-item {
+  position: relative;
+  cursor: pointer;
+
+  width: 240px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 5px;
+
+  text-align: center;
+  font-size: 15px;
+
+  -webkit-transition: background 0.1s, color 0.1s;
+  transition: background 0.1s, color 0.1s;
+}
+
+.toolbar-content-item:hover {
+  background: var(--main-color);
+  color: #fff;
+}
+
+.toolbar-content-item-img {
+  background: white;
+  height: 126px;
+  width: 100%;
+  margin-bottom: 8px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--main-color);
 }

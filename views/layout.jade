@@ -1,9 +1,21 @@
-extends ../node_modules/jade-bootstrap/_bootstrap
+doctype html
+html
 
-append styles
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/toolbar.css')
-    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Aldrich')
 
-append body
+  body
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+    script.
+      var randomText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin ante id arcu ultricies, quis vehicula massa condimentum. Duis imperdiet purus magna. Sed vel nisl sagittis, vestibulum justo sed, dictum lorem. Quisque placerat mollis nibh nec varius. Aenean a semper augue. Cras porta justo vel lorem egestas, pellentesque ultrices purus malesuada. Maecenas lacinia enim vitae neque lacinia, a cursus augue ullamcorper. Curabitur vehicula turpis a lorem aliquam, eget luctus enim congue. Donec eget posuere magna, non pharetra risus. Nunc suscipit malesuada ex, vitae tincidunt ipsum accumsan quis. Proin vitae odio nunc. Sed ac finibus turpis. Cras vestibulum ex sed est pulvinar, ac rutrum mauris dictum. Nulla sit amet interdum neque.";
+      randomText += "<br><br>Sed viverra ultricies convallis. Vivamus erat turpis, gravida sed tempus vel, tempor blandit quam. Ut luctus imperdiet eros ut bibendum. Donec orci lectus, dictum eget nulla sit amet, hendrerit fermentum arcu. Duis id tincidunt nisl. Aliquam pretium magna tellus, eget laoreet leo fringilla nec. Duis gravida lacus non massa mattis blandit. Aenean varius molestie ante, at pretium arcu. Morbi rutrum vel lectus in ullamcorper. Morbi blandit est sed metus congue, eget blandit dui semper. Vivamus a eros augue. Aenean nec tristique augue, at malesuada tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque ullamcorper nec leo in aliquet.";
+      randomText += "<br><br>Mauris ligula neque, varius sed dapibus eu, rhoncus et nibh. Praesent et mattis urna, quis auctor risus. Ut scelerisque ex in nunc malesuada, nec tristique diam lobortis. Sed mollis posuere libero, id vehicula mi blandit et. Cras non nulla velit. Nullam nunc nisi, convallis eu tellus quis, viverra placerat justo. Fusce condimentum auctor neque non cursus. Nunc lacus lectus, aliquet et sodales in, ornare et tortor. Pellentesque sagittis vehicula varius. Sed pulvinar lobortis lectus, eu aliquam tellus pellentesque eget. Cras posuere ultrices tincidunt. Curabitur eget magna dignissim, malesuada nisi eget, accumsan massa. Etiam viverra nisl eleifend, molestie erat sit amet, hendrerit quam. Morbi massa ex, aliquet eget tortor vel, molestie suscipit augue. Pellentesque a est dui.";
+      randomText += "<br><br>Nam cursus mi quis ante sodales venenatis. Integer fermentum mattis est non mollis. Etiam tincidunt commodo aliquet. Praesent eleifend lacus ac dolor scelerisque, in hendrerit quam dapibus. Maecenas nulla est, volutpat vitae venenatis consectetur, cursus vel est. Integer malesuada non ex efficitur dapibus. Integer in dignissim eros. Aliquam at molestie nunc. Donec tincidunt ullamcorper varius.";
+      randomText += "<br><br>Vivamus dolor nisl, laoreet sit amet euismod nec, blandit a risus. Praesent vel orci eu neque maximus congue sed vitae mauris. Nam diam turpis, dignissim eu nulla ornare, sodales pharetra mauris. Sed dolor eros, scelerisque eu malesuada sit amet, placerat at sem. Vivamus at tincidunt magna. Phasellus ullamcorper risus eleifend congue placerat. Mauris pulvinar neque velit. Sed molestie nibh eget elit interdum, a molestie purus convallis. In condimentum mattis ex, quis congue magna dapibus et. Sed nibh lectus, accumsan id mi vitae, tincidunt malesuada sem. Aliquam lobortis lorem eget mi volutpat malesuada. Aliquam erat volutpat. Donec fermentum elit mattis, sollicitudin eros non, placerat purus. Sed nec ultrices nulla. Aenean vel efficitur ligula, vitae dapibus est. Pellentesque felis nulla, finibus ac diam at, suscipit accumsan dolor.";
+
     block content

@@ -1,0 +1,346 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/personal.css')
+
+  .personal-container
+
+    .mynav
+      .BeRD-text
+          span.BeRD-Be Be
+          span.BeRD-R R
+          span.BeRD-D D
+      .mynav-menu(onclick="openNavMenu()")
+        .glyphicon.glyphicon-menu-hamburger
+
+    .option-row.row1(style="display: block;")
+      .option-row-inner
+        .option-row-button-main.noselect(onclick="clickedOption('programming', 1)" style="margin-right: 30px;")
+          span Programming
+          .option-row-button-link-below.programming-link-start
+          .option-row-button-link-horizontal.programming-link
+
+        .option-row-button-main.noselect(onclick="clickedOption('electronics', 1)" style="margin-right: 30px;")
+          span Electronics
+          .option-row-button-link-below.electronics-link-start
+          .option-row-button-link-horizontal.electronics-link
+          .option-row-button-link-horizontal.electronics-link2(style="right: calc(50% - 3px); left: auto;")
+
+        .option-row-button-main.noselect(onclick="clickedOption('gardening', 1)")
+          span Gardening
+          .option-row-button-link-below.gardening-link-start
+          .option-row-button-link-horizontal.gardening-link(style="right: calc(50% - 3px); left: auto;")
+
+
+
+    .option-row.programming-inner.row2
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner.noselect.programming-button(onclick="clickedOption('websites', 2)")
+            span Websites
+            .option-row-button-link-below.websites-link-start
+            .option-row-button-link-horizontal.websites-link
+            .option-row-button-link-horizontal.websites-link2(style="right: calc(50% - 3px); left: auto;")
+          .option-row-button-link-above.programming-link-connector
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner.noselect.programming-button(onclick="clickedOption('other', 2)")
+            span Other
+            .option-row-button-link-below.other-link-start
+            .option-row-button-link-horizontal.other-link(style="right: calc(50% - 3px); left: auto;")
+          .option-row-button-link-above.programming-link-connector.programming-link-end
+
+    .option-row.electronics-inner.row2
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner.noselect.noselect.electronics-button(onclick="clickedOption('automation', 2)")
+            span Automation
+            .option-row-button-link-below.automation-link-start
+            .option-row-button-link-horizontal.automation-link
+          .option-row-button-link-above.electronics-link-connector.electronics-link-end2
+
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner.noselect.noselect.electronics-button(onclick="clickedOption('energy', 2)")
+            span Energy
+            .option-row-button-link-below.energy-link-start
+            .option-row-button-link-horizontal.energy-link
+            .option-row-button-link-horizontal.energy-link2(style="right: calc(50% - 3px); left: auto;")
+          .option-row-button-link-above.electronics-link-connector
+
+        .option-row-button
+          .option-row-button-inner.noselect.electronics-button(onclick="clickedOption('sensors', 2)")
+            span Sensors
+            .option-row-button-link-below.sensors-link-start
+            .option-row-button-link-horizontal.sensors-link(style="right: calc(50% - 3px); left: auto;")
+          .option-row-button-link-above.electronics-link-connector.electronics-link-end
+
+    .option-row.gardening-inner.row2
+      .option-row-inner
+        .option-row-button
+          .option-row-button-inner-leaf.noselect.gardening-button(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')")
+            span Tomato Garden
+          .option-row-button-link-above.gardening-link-connector.gardening-link-end
+
+
+
+    .option-row.websites-inner.row3
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner-leaf.noselect.websites-button(onclick="modalOpen('DINZ', 'Design:Development')")
+            span DINZ
+          .option-row-button-link-above.websites-link-connector.websites-link-end2
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner-leaf.noselect.websites-button(onclick="modalOpen('This Website', 'Design:Development')")
+            span This Website
+          .option-row-button-link-above.websites-link-connector.websites-link-end
+
+    .option-row.other-inner.row3
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner-leaf.noselect.other-button(onclick="modalOpen('Other', '')")
+            span OTHER OPTION
+          .option-row-button-link-above.other-link-connector.other-link-end
+
+
+    .option-row.automation-inner.row3
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner-leaf.noselect.automation-button(onclick="modalOpen('Autonomuos RC Car', 'Development:Autonomy')")
+            span Autonomous RC Car
+          .option-row-button-link-above.automation-link-connector
+        .option-row-button
+          .option-row-button-inner-leaf.noselect.automation-button(onclick="modalOpen('Gyro Stabilizer', 'Development:Stability')")
+            span Gyro Stabilizer
+          .option-row-button-link-above.automation-link-connector.automation-link-end
+
+    .option-row.energy-inner.row3
+      .option-row-inner
+        .option-row-button(style="margin-right: 30px;")
+          .option-row-button-inner-leaf.noselect.energy-button(onclick="modalOpen('Solar Panels', 'Research:Development')")
+            span Solar Panels
+          .option-row-button-link-above.energy-link-connector.energy-link-end2
+        .option-row-button
+          .option-row-button-inner-leaf.noselect.energy-button(onclick="modalOpen('Salt Battery', 'Research:Development')")
+            span Salt Battery
+          .option-row-button-link-above.energy-link-connector.energy-link-end
+
+    .option-row.sensors-inner.row3
+      .option-row-inner
+        .option-row-button
+          .option-row-button-inner-leaf.noselect.sensors-button(onclick="modalOpen('Temperature Sensor', 'Research:Development')")
+            span Temperature
+          .option-row-button-link-above.sensors-link-connector.sensors-link-end
+
+
+    .mymodal-dimmer(onclick="modalClose()")
+    .mymodal-titlebar
+    .mymodal-content
+
+  script.
+
+    var currentLevel = 0;
+    var currentLevelSelected = "";
+
+    function clickedOption(option, level){
+      var delay = 0;
+
+      // Clicked next level down
+      if(currentLevel < level) {
+        currentLevel = level;
+        showLinks(option, delay);
+      }
+
+      // Clicked same level
+      else if(currentLevel == level) {
+        delay = 400;
+        $(".row"+(currentLevel+1)+" .option-row-button-inner").css('opacity', '0');
+        $(".row"+(currentLevel+1)+" .option-row-button-inner-leaf").css('opacity', '0');
+        $(".row"+(currentLevel+1)+" .option-row-button-link-above").css('height', '0px');
+        setTimeout(function(){ $(".row"+currentLevel+" .option-row-button-link-horizontal").css('width', '0px'); }, 100);
+        setTimeout(function(){ $(".row"+(currentLevel+1)).css('display', 'none'); }, 200);
+        setTimeout(function(){ $(".row"+currentLevel+" .option-row-button-link-below").css('height', '0px'); }, 400);
+        currentLevel = level;
+        showLinks(option, delay);
+      }
+
+      // Clicked above level
+      else if(currentLevel > level) {
+        collapseLevels();
+        function collapseLevels(){
+          $(".row"+(currentLevel+1)+" .option-row-button-inner").css('opacity', '0');
+          $(".row"+(currentLevel+1)+" .option-row-button-inner-leaf").css('opacity', '0');
+          $(".row"+(currentLevel+1)+" .option-row-button-link-above").css('height', '0px');
+          setTimeout(function(){ $(".row"+currentLevel+" .option-row-button-link-horizontal").css('width', '0px'); }, 100);
+          setTimeout(function(){ $(".row"+(currentLevel+1)).css('display', 'none'); }, 200);
+          setTimeout(function(){ $(".row"+currentLevel+" .option-row-button-link-below").css('height', '0px'); }, 400);
+          setTimeout(function(){ 
+            currentLevel--;
+            if(currentLevel != (level - 1)) collapseLevels();
+            else { currentLevel = level; showLinks(option, delay); }
+          }, 500);
+        }
+      }
+    }
+
+    function showLinks(option, delay){
+      
+      setTimeout(function(){ 
+        $("." + option + "-inner").css('display', 'block');
+
+        // Show bottom link
+        $("." + option + "-link-start").css('height', '10px');
+
+        // Show horizontal link
+        setTimeout(function(){
+          if(option == 'gardening' || option == 'sensors' || option == 'other') {
+            var from = $("." + option + "-link-start")[0].getBoundingClientRect().right;
+            var to = $("." + option + "-link-end")[0].getBoundingClientRect().left;
+            $("." + option + "-link").css('width', from - to);
+
+          } else if(option == 'electronics' || option == 'energy' || option == 'websites') {
+            var from = $("." + option + "-link-start")[0].getBoundingClientRect().left;
+            var to = $("." + option + "-link-end")[0].getBoundingClientRect().right;
+            $("." + option + "-link").css('width', to - from);
+
+            var from = $("." + option + "-link-start")[0].getBoundingClientRect().right;
+            var to = $("." + option + "-link-end2")[0].getBoundingClientRect().left;
+            $("." + option + "-link2").css('width', from - to);
+            $("." + option + "-link2").css('display', 'block');
+
+          } else {
+            var from = $("." + option + "-link-start")[0].getBoundingClientRect().left;
+            var to = $("." + option + "-link-end")[0].getBoundingClientRect().right;
+            $("." + option + "-link").css('width', to - from);
+          }
+
+        }, 100);
+
+        // Show top links
+        setTimeout(function(){ $("." + option + "-link-connector").css('height', '10px'); }, 400);
+
+        // Show buttons
+        setTimeout(function(){ $("." + option + "-button").css('opacity', '1'); }, 500);
+
+      }, delay);
+
+    }
+
+    // NAVIGATION
+
+    function openNavMenu() {
+      console.log("Open nav menu");
+    }
+
+     
+    // OPENING ANIMATIONS
+
+    // ALTERING ANIMATIONS
+
+    // Show modal
+    function modalOpen(title, buttons) {
+
+      var modalTitlebarHTML = '';
+
+      // Add modal menu dropdown (for phones)
+      modalTitlebarHTML += '<div class="mymodal-dropdown">';
+      buttons.split(':').forEach(function(item, index){
+        modalTitlebarHTML += '<div class="mymodal-dropdown-button index'+index+'">'+item+'</div>';
+      });
+      modalTitlebarHTML += '</div>';
+
+      // Set modal title
+      modalTitlebarHTML += '<div class="mymodal-title">'+title+'</div>';
+
+      // Add modal menu buttons (for desktop)
+      buttons.split(':').forEach(function(item, index){
+        modalTitlebarHTML += '<div class="mymodal-title-button index'+index+'">'+item+'</div>';
+      });
+
+      // Add modal close button
+      modalTitlebarHTML += '<div class="mymodal-close" onclick="modalClose()"><span class="glyphicon glyphicon-remove"></span></div>';
+
+      // Add modal menu button (for phones)
+      modalTitlebarHTML += '<div class="mymodal-menu" onclick="openModalMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>';
+
+      $('.mymodal-titlebar').html(modalTitlebarHTML);
+
+      // Make modal menu buttons clickable (for phones)
+      $('.mymodal-dropdown-button').click(function(){
+        clickedModalMenuButton($(this));
+      });
+
+      // Make modal menu buttons clickable (for desktop)
+      $('.mymodal-title-button').click(function(){
+        clickedModalMenuButton($(this));
+      });
+
+      // Show modal
+      $('.mymodal-dimmer').fadeIn();
+      $('.mymodal-titlebar').css("transform", "translate(0px, -100vh)");
+      $('.mymodal-content').css("transform", "translate(0px, -100vh)");
+
+      // Select first modal menu button and start loading
+      clickedModalMenuButton($('.mymodal-title-button').first());
+    }
+
+    function openModalMenu() {
+      $(".mymodal-dropdown").slideToggle(200);
+    }
+
+    // Hide modal
+    function modalClose() {
+      $('.mymodal-dimmer').fadeOut();
+      $('.mymodal-titlebar').css("transform", "");
+      $('.mymodal-content').css("transform", "");
+      // Clear submenu buttons and current submenu page to save RAM
+      setTimeout(function() {
+        $('.mymodal-content').html('');
+      }, 600);
+    }
+
+    // Click modal submenu button
+    function clickedModalMenuButton(button){
+      // Clear other submenu buttons and select the one that was clicked
+      $('.mymodal-title-button').removeClass('selected');
+      $('.mymodal-dropdown-button').removeClass('selected');
+
+      var myClasses = $(button).attr('class').split(' ');
+      for (var i = 0; i < myClasses.length; i++) {
+        if (myClasses[i].startsWith("index")) {
+          $('.' + myClasses[i]).addClass('selected');
+        }
+        if (myClasses[i] == 'mymodal-dropdown-button') {
+          $(".mymodal-dropdown").slideToggle(200);
+        }
+      }
+      $(button).addClass('selected');
+
+      // Clear and show loading
+      var loadingHTML = '<div class="mymodal-loading"></div>';
+      $('.mymodal-content').html(loadingHTML);
+
+      // Get new data from server and display it
+      setTimeout(function() {
+        var html = '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+        html += '<div class="mymodal-content-image"></div>';
+        html += '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+        html += '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+        html += '<div class="mymodal-content-image"></div>';
+        $('.mymodal-content').html(html);
+      }, 1000);
+    }
+
+
+    // LEAVING ANIMATIONS
+
+    // Navigate away from this page
+    function clickedNavButton(url) {
+      // Return animations
+      
+      setTimeout(function(){
+        window.location.assign(url);
+      }, 200);
+    }
+
+    
+    
+    

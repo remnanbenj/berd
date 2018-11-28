@@ -1,0 +1,97 @@
+extends layout
+
+block content
+
+  .content-container(id="contentContainer" style="left: 300px;")
+    iframe.website(id="frame" src="" width="100%" height="100%")
+
+  .toolbar-show(onclick="show()")
+    .glyphicon.glyphicon-arrow-right
+
+  .toolbar
+
+    .toolbar-content
+
+      .toolbar-content-item(id="post0" onclick="openPost(0, 800)")
+        .toolbar-content-item-img(id="post0img" style="background-image: url('/images/dinz.png');")
+        span(id="post0title") DINZ
+
+      .toolbar-content-item(id="post1" onclick="openPost(1, 800)")
+        .toolbar-content-item-img(id="post1img" style="background-image: url('/images/BeRD-home_page.png');")
+        span(id="post1title") This Website
+
+    .toolbar-menu-holder
+      .toolbar-menu-item(onclick="clickedNavButton('/')")
+        span Home
+      .toolbar-menu-item(onclick="clickedNavButton('/websites')")
+        span Websites
+      .toolbar-menu-item(onclick="clickedNavButton('/projects')")
+        span Projects
+      .toolbar-menu-item(onclick="clickedNavButton('/about')")
+        span About Me
+
+    .toolbar-title-holder
+      span.toolbar-title Websites
+      .toolbar-home(onclick="clickedNavButton('/')")
+        .glyphicon.glyphicon-home
+
+    .toolbar-logo(style="background-image: url('images/websites_button.png');")
+    .toolbar-hide(onclick="hide()")
+      .glyphicon.glyphicon-arrow-left
+
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+  script.
+     
+    // Toolbar and content opening animations
+    setTimeout(function(){ $(".toolbar").css("transform", "translate(300px, 0px)"); }, 0);
+    setTimeout(function(){ openPost(0, 400); }, 0);
+
+    // Opened post
+    function openPost(postID, speed){
+      $(".toolbar-content-item").css("background", "");
+      $(".toolbar-content-item").css("color", "");
+      $("#post"+postID).css("color", "white"); 
+      $("#post"+postID).css("background", "var(--main-color)");
+      $("#frame").attr("src", "about:blank");
+
+      setTimeout(function(){ 
+        if(postID == 0) $("#frame").attr("src", "http://tec.co.nz/");
+        else if(postID == 1) $("#frame").attr("src", "http://192.168.1.79/");
+      }, speed);
+
+    }
+
+    // Navigate elsewhere
+    function clickedNavButton(url) {
+      // Toolbar return animation
+      $(".toolbar").css("transform", "");
+     
+      // Post holder return animation
+      $("#frame").attr("src", "about:blank");
+      
+      setTimeout(function(){
+        window.location.assign(url);
+      }, 200);
+    }
+
+    // Opened and closes the navigation menu at the top of the toolbar
+    function openCloseMenu(){
+      if($('.toolbar-menu-holder').css('transform') == 'none') {
+        $('.toolbar-menu-holder').css('transform', 'translate(0px, 100%)');
+      } else {
+        $('.toolbar-menu-holder').css('transform', '');
+      }
+    }
+
+    // Hides and shows the toolbar
+    function hide(){
+      $(".content-container").css("width", "100%");
+      $(".content-container").css("left", "0px");
+      $(".toolbar").css("transform", ""); 
+    }
+    function show(){
+      $(".content-container").css("width", "calc(100% - 300px)");
+      $(".content-container").css("left", "300px");
+      $(".toolbar").css("transform", "translate(300px, 0px)"); 
+    }
