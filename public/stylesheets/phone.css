@@ -1,0 +1,117 @@
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url(https://fonts.googleapis.com/css?family=Aldrich);
+
+:root {
+  --main-color: #0094FF;
+  --main-color-bright: #4DB4FF;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #FFFFFF;
+  font-family: 'Aldrich', monospace;
+  height: 100%;
+  color: #555;
+}
+
+
+/* title */
+
+.phone-title-container {
+  position: absolute;
+  top: 0px;
+  left: 5%;
+  right: 5%;
+  height: 64px;
+  background: var(--main-color-bright);
+  box-shadow: 1px 1px 1px #888;
+}
+
+.phone-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin-top: 18px;
+  color: #fff;
+}
+
+
+/* title */
+
+.phone-personal-container {
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  right: 16%;
+  background: var(--main-color-bright);
+  box-shadow: 1px 1px 1px #888;
+}
+
+.phone-personal-text {
+  text-align: right;
+  font-size: 30px;
+  padding: 20px;
+  padding-bottom: 14px;
+  color: #fff;
+}
+
+.phone-professional-container {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: 16%;
+  right: 0%;
+  background: var(--main-color-bright);
+  box-shadow: 1px 1px 1px #888;
+}
+
+.phone-professional-text {
+  text-align: left;
+  font-size: 30px;
+  padding: 20px;
+  padding-bottom: 14px;
+  color: #fff;
+}
+
+.phone-about-container {
+  position: absolute;
+  bottom: 20%;
+  left: 0%;
+  right: 16%;
+  background: var(--main-color-bright);
+  box-shadow: 1px 1px 1px #888;  
+}
+
+.phone-about-text {
+  text-align: right;
+  font-size: 30px;
+  padding: 20px;
+  padding-bottom: 14px;
+  color: #fff;
+}
+
+
+/* Footer */
+
+.phone-footer-container {
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 80px);
+  width: 160px;
+  height: 64px;
+  background: var(--main-color-bright);
+  box-shadow: 1px 1px 1px #888;
+}
+
+.phone-footer-text {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 22px;
+  color: #fff;
+}
+
