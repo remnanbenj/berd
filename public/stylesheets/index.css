@@ -54,7 +54,7 @@ body {
 	color: #FFFFFF;
 	text-align: center;
 	padding: 2px;
-	box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
 	z-index: 10;
 }
 
@@ -123,11 +123,21 @@ body {
 
 .panel-item {
 	display: inline-block;
+    position: relative;
 	height: 36vh;
 	width: 30%;
-	margin-top: 6vh;
+	margin-top: 7vh;
 	margin-left: 2.5vw;
 	background: var(--main-color);
+	box-shadow: 0 10px 30px rgba(0,0,0,0.30), 0 5px 10px rgba(0,0,0,0.20);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.panel-item:hover {
+	transform: translate(0px, -5px);
+	box-shadow: 0 15px 35px rgba(0,0,0,0.40), 0 10px 15px rgba(0,0,0,0.30);
 }
 
 .panel-bottom {
