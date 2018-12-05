@@ -160,8 +160,8 @@ body {
 
 @media only screen and (max-width: 800px) {
   .title-bar {
-	padding: 0px;
-	padding-top: 10px;
+	padding: 5px;
+	padding-top: 15px;
   }
   .title-image {
 	height: 18vh;
