@@ -17,23 +17,67 @@ html
           .title-image-text
             .title-image-text-inner web design & development
 
+        .title-panel(id="professional-panel" style="display: block;")
+
+        .title-panel(id="projects-panel")
+
+        .title-panel(id="about-panel")
+
+        .title-panel(id="contact-panel")
+
       .content
         .button-container
           a(href="#professional")
-            .button.professional-button
+            .button.professional-button(onclick="showHidePanel('professional')")
               .button-text professional
 
           a(href="#projects")
-            .button.projects-button
+            .button.projects-button(onclick="showHidePanel('projects')")
               .button-text projects
 
           a(href="#about")
-            .button.right.about-button
+            .button.right.about-button(onclick="showHidePanel('about')")
               .button-text about
 
           a(href="#contact")
-            .button.right.contact-button
+            .button.right.contact-button(onclick="showHidePanel('contact')")
               .button-text contact
 
       .footer
-        .footer-copyright © Ben Remnant Design, 2018
+        .footer-copyright © berd design & development, 2018
+
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+    script.
+
+      function showHidePanel(panel) {
+        if($('#professional-panel').css('display') == 'block' || $('#projects-panel').css('display') == 'block' || $('#about-panel').css('display') == 'block' || $('#contact-panel').css('display') == 'block'){
+          if($('#'+panel+'-panel').css('display') != 'block') setTimeout(()=>{$('#'+panel+'-panel').slideToggle(200);},250);
+          $('.title-panel').slideUp(160);
+        } else {
+          $('#'+panel+'-panel').slideToggle(200);
+        }
+      }
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
