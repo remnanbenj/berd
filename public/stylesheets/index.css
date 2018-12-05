@@ -23,21 +23,16 @@ body {
 /* Title */
 
 .title-bar {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	height: 10vh;
 	background: var(--main-color);
 	color: #FFFFFF;
 	text-align: center;
+	line-height: 10vh;
 }
 
 .title-text {
     font-family: 'Aldrich', monospace;
 	font-size: 50px;
-	font-weight: bold;
-}
-
-.title-subtext {
-	font-size: 20px;
 	font-weight: bold;
 }
 
