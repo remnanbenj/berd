@@ -23,11 +23,10 @@ body {
 /* Title */
 
 .title-bar {
-	height: 10vh;
 	background: var(--main-color);
 	color: #FFFFFF;
 	text-align: center;
-	line-height: 10vh;
+	padding: 5px;
 }
 
 .title-text {
