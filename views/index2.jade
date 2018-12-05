@@ -1,0 +1,193 @@
+doctype html
+html
+
+  head
+    title= title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/index.css')
+
+  body
+    .div(style="text-align: center; position: relative; top: -240px;")
+      span.BeRD BeRD
+      span.BeRD-text
+        span.BeRD-Be Be
+        span(id="n") n 
+        span.BeRD-R R
+        span(id="emnant") emnant 
+        span.BeRD-D D
+        span(id="esign") esign
+        span.blinking-cursor |
+  
+    .homepage-button-holder
+
+        .col-md-4(style="height: 300px; padding: 0px;")
+          .homepage-button(id="websites" onclick="clickedButton('/professional')")
+            .homepage-button-inner(style="background: url('/images/professional_button.png');")
+            span.homepage-button-label Professional
+          .homepage-button-description-websites Websites and other projects I've designed & developed for clients<br>
+          
+        .col-md-4(style="height: 300px; padding: 0px;")
+          .homepage-button(id="projects" onclick="clickedButton('/personal')")
+            .homepage-button-inner(style="background: url('/images/personal_button.png');")
+            span.homepage-button-label Personal
+          .homepage-button-description-projects Projects I do in my spare time from programming microchips to gardening
+
+        .col-md-4(style="height: 300px; padding: 0px;")
+          .homepage-button(id="about" onclick="clickedButton('/about')")
+            .homepage-button-inner(style="background: url('/images/about_button.png');")
+            span.homepage-button-label About
+          .homepage-button-description-about A small description about BeRD and myself<br>
+
+
+    .homepage-dimmer(onclick="clickedButton('contact')")
+
+
+    .homepage-footer-holder
+
+      span.homepage-footer-button(onclick="clickedButton('contact')") 
+        .homepage-footer-inner Contact
+    //-
+      span &nbsp;&nbsp;&nbsp;&nbsp;
+      span.homepage-footer-button(onclick="clickedButton('/game')")
+        .homepage-footer-inner Web Game
+
+
+    .homepage-quick-contact
+
+      .div(style="text-align: center;")
+        .contact-info
+          span Ben Remnant
+          br
+          span Phone: 027 203 4418
+          br
+          span Email: ben.remnant@gmail.com
+          br
+
+      .homepage-qc-or or
+
+      span.homepage-qc-name Your Full Name:
+      br
+      input.homepage-qc-input(type="text" placeholder="Your first & last name")
+      br
+      span.homepage-qc-name Your Email:
+      br
+      input.homepage-qc-input(type="text" placeholder="example@example.co.nz")
+      br
+      span.homepage-qc-name Your Message:
+      br
+      textarea.homepage-qc-textarea(placeholder="Put your message here...")
+      .homepage-qc-send Send Message
+      .homepage-qc-send(onclick="clickedButton('contact')") Close
+
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
+    script.
+
+      $(".homepage-button").hover(function(){ 
+        $(".homepage-button-description-"+$(this).attr('id')).css("transform", "translate(0px, -10px)");
+        $(".homepage-button-description-"+$(this).attr('id')).css("opacity", "1");
+      }, function(){ 
+        $(".homepage-button-description-"+$(this).attr('id')).css("transform", "translate(0px, 0px)");
+        $(".homepage-button-description-"+$(this).attr('id')).css("opacity", "0");
+      });
+
+      var clicked = false;
+      var clickToggle = false;
+      $('.BeRD-logo').click(function(){
+        if(clickToggle) { $(".BeRD-logo").css("transform", "translate(0px, 210px) rotate(180deg)"); clickToggle=!clickToggle; }
+        else { $(".BeRD-logo").css("transform", "translate(0px, 210px) rotate(180deg)"); clickToggle=!clickToggle; }
+        clicked = true;
+        setTimeout(function(){ $(".BeRD-logo").css("transform", "translate(0px, 210px) rotate(5deg)"); clicked = false; }, 500);
+      });
+
+      $('.BeRD-logo').hover(function(){
+        if(!clicked)
+          $(".BeRD-logo").css("transform", "translate(0px, 210px) rotate(5deg)");
+      }, function(){
+        if(!clicked)
+          $(".BeRD-logo").css("transform", "translate(0px, 210px)");
+      });
+
+      // Typewriter
+      var speed = 110;
+      var words = ['esign', 'evelopment', 'eployment'];
+      function typeWriter(id, wordNum, i) {
+        var txt = words[wordNum];
+        if (i < txt.length) {
+          document.getElementById(id).innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(function(){typeWriter(id, wordNum, i);}, speed);
+        } else {
+          setTimeout(function(){typeWriterR('esign', wordNum, words[wordNum].length);}, 800);
+        }
+      }
+      function typeWriterR(id, wordNum, i) {
+        if (i >= 0) {
+          document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.substring(0, document.getElementById(id).innerHTML.length - 1);
+          i--;
+          setTimeout(function(){typeWriterR(id, wordNum, i);}, speed * 0.8);
+        } else {
+          wordNum++;
+          if(wordNum==words.length) wordNum = 0;
+          setTimeout(function(){typeWriter('esign', wordNum, 0);}, 200);
+        }
+      }
+      setTimeout(function(){typeWriterR('esign', 0, words[0].length);}, 1400);
+
+      // On page load animations
+      openAnimations()
+
+      // After a button was clicked
+      function clickedButton(url) {
+        // If contact then open contact menu
+        if(url == 'contact') { openContact(); }
+        // Else its a url
+        else { returnAnimations(); setTimeout(function(){ window.location.assign(url); }, 300); }
+      }
+
+      function openContact() {
+        $('.homepage-quick-contact').slideToggle(200);
+        if($('.homepage-dimmer').css('display') == 'none')
+          $('.homepage-dimmer').fadeIn();
+        else
+          $('.homepage-dimmer').fadeOut();
+      }
+
+      function openAnimations() {
+        // Title animations
+        setTimeout(function(){ $(".BeRD-logo").css("transform", "translate(0px, 210px)"); }, 0);
+        setTimeout(function(){ $(".BeRD-text").css("transform", "translate(0px, 220px)"); }, 150);
+        setTimeout(function(){ $(".BeRD").css("transform", "translate(0px, 250px)"); }, 250);
+        setTimeout(function(){ $(".welcome-text").css("transform", "translate(0px, 260px)"); }, 350);
+
+        // Button animations
+        setTimeout(function(){ $(".homepage-button-holder").css("transform", "translate(0px, -30px)"); }, 300);
+        setTimeout(function(){ $(".homepage-button").css("opacity", "1"); }, 300);
+
+        // Footer animations
+        setTimeout(function(){ $(".homepage-footer-holder").css("transform", "translate(0px, -30px)"); }, 500);
+        setTimeout(function(){ $(".homepage-footer-button").css("opacity", "1"); }, 500);
+      }
+
+      function returnAnimations() {
+        // Title animations
+        setTimeout(function(){ $(".BeRD-logo").css("transform", ""); }, 200);
+        setTimeout(function(){ $(".BeRD-text").css("transform", ""); }, 150);
+        setTimeout(function(){ $(".BeRD").css("transform", ""); }, 50);
+        $(".welcome-text").css("transform", "");
+
+        // Button animations
+        $(".homepage-button-holder").css("transform", "");
+        $(".homepage-button").css("opacity", "0");
+        $(".homepage-button-description-websites").css("opacity", "0");
+        $(".homepage-button-description-projects").css("opacity", "0");
+        $(".homepage-button-description-about").css("opacity", "0");
+
+        // Footer animations
+        $(".homepage-footer-holder").css("transform", "");
+        $(".homepage-footer-button").css("opacity", "0");
+      }
+
+    
+    
+    
