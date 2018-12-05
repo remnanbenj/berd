@@ -3,10 +3,225 @@ html
 
   head
     title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/resume.css')
 
   body
+    .download-container
+    a.download(href="/resume.pdf" download) Download PDF Version
 
+    page(size="A4")
+      .title-container3
+        .picture4
+        .name3 Ben Remnant
+        .profession3 Software Developer
+        .phone 027 203 4418
+        .contact-seperator2
+        .email ben.remnant@gmail.com
+      .summary3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet elementum felis, in cursus felis. Praesent accumsan enim sit amet arcu imperdiet feugiat. Praesent vitae faucibus justo. Nunc at nunc ligula. Nulla mi ex, tempus tempus tortor et, tincidunt consectetur urna. Suspendisse mattis libero nec lorem lacinia congue. Etiam non rhoncus orci. Donec eget felis in justo elementum feugiat. Praesent ac sapien felis.
+      
+      .column-container3
+
+        .column-left3
+          .column-left3-inner
+            .column-title3 Strengths
+            .skill3
+              .bullet3
+              span Graphical Design
+            .skill3
+              .bullet3
+              span Functional Design
+            .skill3
+              .bullet3
+              span User Friendly Design
+            .skill3
+              .bullet3
+              span Search Engine Optimisation
+            .skill3
+              .bullet3
+              span Client Communication
+            .skill3
+              .bullet3
+              span Application Engineering
+            .skill3
+              .bullet3
+              span Teamwork
+            .skill3
+              .bullet3
+              span Creativity
+
+          .column-left3-inner
+            .column-title3 Software Development
+            .skill3
+              span.skill-text Python
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text Java
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text C#
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text C / C++
+              .star
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text Git
+              .star
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+
+          .column-left3-inner
+            .column-title3 Web Development
+            .skill3
+              span.skill-text HTML / HTML5
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text CSS / CSS3
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text JavaScript / jQuery
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text Node.js
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text WordPress
+              .star
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text PHP
+              .star
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+
+          .column-left3-inner
+            .column-title3 Databases
+            .skill3
+              span.skill-text MySQL
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text PostgreSQL
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text Firebase (NoSQL)
+              .star
+              .star
+              .star.activated
+              .star.activated
+              .star.activated
+            .skill3
+              span.skill-text Redis
+              .star
+              .star
+              .star
+              .star.activated
+              .star.activated
+
+        .column-right3
+          .column-left3-inner
+            .column-title3 Professional Experience
+
+            .exp
+              .exp-job Danfoss NZ Collaboration Website
+              .exp-date February 2016 <span style="color: var(--main-color); font-weight: 1000;">-</span> Present
+              .exp-title Full Stack Developer
+              .exp-content
+                .bullet3
+                span First big scale project 
+              .exp-content
+                .bullet3
+                span Large flow of sensitive information
+              .exp-content
+                .bullet3
+                span Secure user authentication
+
+            br
+
+            .exp
+              .exp-job HTML Email for Z Energy
+              .exp-date November 2018 <span style="color: var(--main-color); font-weight: 1000;">-</span> December 2018
+              .exp-title HTML/CSS Developer
+              .exp-content
+                .bullet3
+                span Responsive newsletter email
+              .exp-content
+                .bullet3
+                span Working with a team of designers
+
+          .column-left3-inner
+            .column-title3 Personal Experience
+
+            .exp
+              .exp-job BeRD Website
+              .exp-title Full Stack Developer
+              .exp-content
+                .bullet3
+                span Easy to use, functional and informative
+              .exp-content
+                .bullet3
+                span Ongoing development
+
+            br
+
+            .exp
+              .exp-job About A House
+              .exp-title Full Stack Developer
+              .exp-content
+                .bullet3
+                span Personal project to monitor your home
+              .exp-content
+                .bullet3
+                span Currently in the research phase
+              .exp-content
+                .bullet3
+                span Linking my love for electronics with my love of programming
 
     page(size="A4")
       .title-container3
