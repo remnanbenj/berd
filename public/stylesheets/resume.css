@@ -255,6 +255,7 @@ a:link, a:visited, a:hover, a:active {
   box-sizing: border-box;
   background: var(--main-color-bright);
   box-shadow: 2px 2px 2px #777777;
+  pointer-events: auto;
 }
 
 .download:hover {
