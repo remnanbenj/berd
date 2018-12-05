@@ -26,7 +26,7 @@ body {
 	background: var(--main-color);
 	color: #FFFFFF;
 	text-align: center;
-	padding: 20px;
+	padding: 8px;
 }
 
 .title-text {
@@ -62,8 +62,8 @@ body {
 	
 	color: #FFFFFF;
 	text-align: center;
-	font-size: 33px;
-	font-weight: 600;
+	font-size: 29px;
+	font-weight: 500;
 	line-height: 48px;
 }
 .title-image-text-inner {
@@ -159,6 +159,10 @@ body {
 /* Media */
 
 @media only screen and (max-width: 800px) {
+  .title-bar {
+	padding: 0px;
+	padding-top: 10px;
+  }
   .title-image {
 	height: 18vh;
     margin-bottom: 25px;
