@@ -239,7 +239,7 @@ body {
     margin-bottom: 25px;
   }
   .title-image-text {
-	top: calc(50% - 30px);
+	top: calc(50% - 25px);
 	font-size: 20px;
   }
   
@@ -268,7 +268,7 @@ body {
   .button-phone {
     display: none;
     float: left;
-	height: 58vh;
+	height: 50vh;
 	width: 100vw;
 	margin: 0px;
 	margin-top: 0px;
@@ -283,7 +283,7 @@ body {
   .button-phone-item {
     display: inline-block;
     width: 80vw;
-    height: 50vh;
+    height: 42vh;
     margin-top: 4vh;
     margin-left: 5vw;
     box-shadow: 0 5px 15px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.20);

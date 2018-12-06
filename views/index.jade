@@ -80,7 +80,7 @@ html
             $('.button').css('transform', 'translate(0%, 0%)');
             if($('#'+panel+'-panel').css('display') != 'block') { window.location.hash = panel; $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)'); setTimeout(()=>{ $('#'+panel+'-panel').slideToggle(200);}, 100); }
             else { history.replaceState(null, null, ' '); }
-            $('.title-panel').slideUp(200);
+            $('.title-panel').slideUp(100);
           } else {
             window.location.hash = panel;
             $('#'+panel+'-panel').slideToggle(200);
