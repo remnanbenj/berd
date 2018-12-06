@@ -53,14 +53,14 @@ body {
 	background: var(--main-color);
 	color: #FFFFFF;
 	text-align: center;
-	padding: 2px;
+	padding: 4px;
 	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
 	z-index: 10;
 }
 
 .title-text {
     font-family: 'Aldrich', monospace;
-	font-size: 48px;
+	font-size: 50px;
 	font-weight: bold;
 }
 
@@ -91,7 +91,7 @@ body {
 	
 	color: #FFFFFF;
 	text-align: center;
-	font-size: 29px;
+	font-size: 21px;
 	font-weight: 500;
 	line-height: 48px;
 }
@@ -235,10 +235,19 @@ body {
 	padding: 5px;
 	padding-top: 15px;
   }
+  
   .title-image {
-	height: 18vh;
+	height: 22vh;
     margin-bottom: 25px;
   }
+  
+  .title-image-inner {
+	background: rgba(0,148,255,0.4);
+  }
+  
+  .title-image-text-inner {
+  }
+  
   .title-image-text {
 	top: calc(50% - 25px);
 	font-size: 20px;
