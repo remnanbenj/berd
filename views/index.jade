@@ -90,7 +90,7 @@ html
         } else {
           if($('.button-phone-professional').css('display') == 'block' || $('.button-phone-projects').css('display') == 'block' || $('.button-phone-about').css('display') == 'block' || $('.button-phone-contact').css('display') == 'block') {
             var isClosing = $('.button-phone-'+panel).css('display') != 'block';
-            if(isClosing) $('.button-phone').slideUp(1);
+            if(isClosing) $('.button-phone').slideUp(10);
             setTimeout(()=>{
               if($('.button-phone-'+panel).css('display') != 'block'){
                 $([document.documentElement, document.body]).animate({
@@ -99,7 +99,7 @@ html
               }
               if(isClosing) {  $('.button-phone-'+panel).slideToggle(200); window.location.hash = panel; }
               else { $('.button-phone-'+panel).slideToggle(200); history.replaceState(null, null, ' '); }
-            }, 2);
+            }, 20);
           } else {
             if($('.button-phone-'+panel).css('display') != 'block'){
               $([document.documentElement, document.body]).animate({
