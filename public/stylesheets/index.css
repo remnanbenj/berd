@@ -115,7 +115,6 @@ body {
 	height: 100%;
 	padding-top: 100px;
 	background: var(--main-color-bright);
-	transition: width 0.3s;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
@@ -246,6 +245,7 @@ body {
   
   .button-container {
 	padding: 0px;
+	padding-bottom: 10px;
   }
   
   .button {
@@ -264,8 +264,37 @@ body {
 	box-shadow: 0 10px 30px rgba(0,0,0,0.30), 0 5px 10px rgba(0,0,0,0.20), inset 0px -30px 20px rgba(0,0,0,0.40);
 	bottom: 0px;
   }
+  
+  .button-phone {
+    display: none;
+    float: left;
+	height: 58vh;
+	width: 100vw;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 35px;
+    background: var(--main-color-bright);
+	box-shadow: inset 0px 5px 15px rgba(0,0,0,0.3);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  
+  .button-phone-item {
+    display: inline-block;
+    width: 80vw;
+    height: 50vh;
+    margin-top: 4vh;
+    margin-left: 5vw;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.20);
+	background: var(--main-color);
+  }
+  .button-phone .button-phone-item:last-child {
+    margin-right: 5vw;
+  }
+  
   .footer {
-	padding-top: 25px;
+	padding-top: 0px;
 	padding-bottom: 20px;
   }
 }

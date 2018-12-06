@@ -37,15 +37,27 @@ html
         .button-container
             .button.professional-button(onclick="showHidePanel('professional')")
               .button-text professional
+            .button-phone.button-phone-professional
+              .button-phone-item
+              .button-phone-item
+              .button-phone-item
+              .button-phone-item
 
             .button.projects-button(onclick="showHidePanel('projects')")
               .button-text projects
+            .button-phone.button-phone-projects
+              .button-phone-item
+              .button-phone-item
+              .button-phone-item
+              .button-phone-item
 
             .button.right.about-button(onclick="showHidePanel('about')")
               .button-text about
+            .button-phone.button-phone-about
 
             .button.right.contact-button(onclick="showHidePanel('contact')")
               .button-text contact
+            .button-phone.button-phone-contact
 
       .footer
         .footer-copyright © berd design & development, 2018
@@ -74,6 +86,15 @@ html
             $('#'+panel+'-panel').slideToggle(200);
             $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
           }
+          
+        } else {
+          if($('.button-phone-'+panel).css('display') != 'block'){
+            $([document.documentElement, document.body]).animate({
+              scrollTop: $('.'+panel+'-button').offset().top - 15
+            }, 200);
+          }
+          window.location.hash = panel;
+          $('.button-phone-'+panel).slideToggle(200);
         }
       }
       
