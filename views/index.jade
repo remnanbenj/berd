@@ -88,13 +88,27 @@ html
           }
           
         } else {
-          if($('.button-phone-'+panel).css('display') != 'block'){
-            $([document.documentElement, document.body]).animate({
-              scrollTop: $('.'+panel+'-button').offset().top - 15
-            }, 200);
+          if($('.button-phone-professional').css('display') == 'block' || $('.button-phone-projects').css('display') == 'block' || $('.button-phone-about').css('display') == 'block' || $('.button-phone-contact').css('display') == 'block') {
+            var isClosing = $('.button-phone-'+panel).css('display') != 'block';
+            if(isClosing) $('.button-phone').slideUp(1);
+            setTimeout(()=>{
+              if($('.button-phone-'+panel).css('display') != 'block'){
+                $([document.documentElement, document.body]).animate({
+                  scrollTop: $('.'+panel+'-button').offset().top - 15
+                }, 200);
+              }
+              if(isClosing) {  $('.button-phone-'+panel).slideToggle(200); window.location.hash = panel; }
+              else { $('.button-phone-'+panel).slideToggle(200); history.replaceState(null, null, ' '); }
+            }, 2);
+          } else {
+            if($('.button-phone-'+panel).css('display') != 'block'){
+              $([document.documentElement, document.body]).animate({
+                scrollTop: $('.'+panel+'-button').offset().top - 15
+              }, 200);
+            }
+            window.location.hash = panel;
+            $('.button-phone-'+panel).slideToggle(200);
           }
-          window.location.hash = panel;
-          $('.button-phone-'+panel).slideToggle(200);
         }
       }
       

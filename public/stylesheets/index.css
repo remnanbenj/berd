@@ -30,7 +30,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--main-color-bright);
+  background: transparent;
 }
 
 /* Handle */
@@ -265,6 +265,10 @@ body {
 	bottom: 0px;
   }
   
+  .title-panel {
+    visibility: hidden;
+  }
+  
   .button-phone {
     display: none;
     float: left;
@@ -273,8 +277,8 @@ body {
 	margin: 0px;
 	margin-top: 0px;
 	margin-bottom: 35px;
-    background: var(--main-color-bright);
-	box-shadow: inset 0px 5px 15px rgba(0,0,0,0.3);
+    background: #eee;
+	box-shadow: inset 0px 3px 10px rgba(0,0,0,0.3);
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
@@ -288,6 +292,7 @@ body {
     margin-left: 5vw;
     box-shadow: 0 5px 15px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.20);
 	background: var(--main-color);
+    border-radius: 5px;
   }
   .button-phone .button-phone-item:last-child {
     margin-right: 5vw;
