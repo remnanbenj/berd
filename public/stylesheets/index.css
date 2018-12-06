@@ -59,14 +59,24 @@ body {
 }
 
 .title-text {
+	margin-top: 25px;
     font-family: 'Aldrich', monospace;
-	font-size: 50px;
+	font-size: 48px;
 	font-weight: bold;
+	line-height: 20px;
+}
+
+.title-subtext {
+	margin-top: 2px;
+	margin-bottom: 12px;
+    font-family: 'Aldrich', monospace;
+	font-size: 20px;
+	line-height: 20px;
 }
 
 .title-image {
 	position: relative;
-	height: 52vh;
+	height: 340px;
 	background: var(--main-color-bright);
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -83,6 +93,16 @@ body {
 	background: rgba(0,148,255,0.3);
 }
 
+.title-image-inner-2 {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: rgba(0,0,0,0.6);
+}
+
 .title-image-text {
 	position: absolute;
 	top: 5vh;
@@ -91,10 +111,11 @@ body {
 	
 	color: #FFFFFF;
 	text-align: center;
-	font-size: 21px;
+	font-size: 23px;
 	font-weight: 500;
 	line-height: 48px;
 }
+
 .title-image-text-inner {
     display: inline-block;
 	background: rgba(0,0,0,0.2);
@@ -111,11 +132,10 @@ body {
 	display: none;
 	position: absolute;
 	bottom: 0px;
-	left: 0px;
+	right: 0px;
 	width: 100%;
 	height: 100%;
 	padding-top: 100px;
-	background: rgba(0,0,0,0.4);
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
@@ -124,9 +144,9 @@ body {
 .panel-item {
 	display: inline-block;
     position: relative;
-	height: 36vh;
-	width: 30%;
-	margin-top: 5vh;
+	height: 240px;
+	width: 400px;
+	margin-top: 40px;
 	margin-left: 2.5vw;
 	background: var(--main-color);
 	box-shadow: 0 10px 30px rgba(0,0,0,0.30), 0 5px 10px rgba(0,0,0,0.20);
@@ -155,19 +175,23 @@ body {
 }
 
 .button-container {
-	padding-top: 4vh;
-	padding-bottom: 4vh;
+	position: relative;
+	padding-top: 40px;
+	padding-bottom: 30px;
 	overflow: auto;
+	margin: 0 auto;
+	max-width: 1200px;
+	margin-bottom: 15px;
 }
 
 .button {
 	position: relative;
 	bottom: 0px;
 	float: left;
-	height: 28vh;
+	height: 170px;
 	width: 22.5%;
 	margin-left: 2%;
-	border-radius: 7px;
+	border-radius: 5px;
 	background: var(--main-color);
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -234,9 +258,11 @@ body {
   .title-bar {
 	padding: 5px;
 	padding-top: 15px;
+	margin-bottom: 25px;
   }
   
   .title-image {
+	display: none;
 	height: 22vh;
     margin-bottom: 25px;
   }
@@ -254,13 +280,16 @@ body {
   }
   
   .button-container {
+	height: auto;
 	padding: 0px;
 	padding-bottom: 10px;
   }
   
   .button {
-	height: 32vh;
+	height: 200px;
 	width: calc(100% - 30px);
+	max-height: none;
+	max-width: none;
 	margin: 15px;
 	margin-top: 0px;
 	margin-bottom: 25px;
@@ -282,12 +311,12 @@ body {
   .button-phone {
     display: none;
     float: left;
-	height: 50vh;
 	width: 100vw;
+	height: 234px;
 	margin: 0px;
 	margin-top: 0px;
 	margin-bottom: 35px;
-    background: #fafafa;
+    background: #eee;
 	box-shadow: inset 0px 3px 10px rgba(0,0,0,0.3);
     overflow-x: auto;
     overflow-y: hidden;
@@ -296,16 +325,17 @@ body {
   
   .button-phone-item {
     display: inline-block;
-    width: 80vw;
-    height: 42vh;
-    margin-top: 4vh;
-    margin-left: 5vw;
+	height: 180px;
+	width: 300px;
+    margin-left: 20px;
+    margin-top: 25px;
+    margin-bottom: 19px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.20);
 	background: var(--main-color);
     border-radius: 5px;
   }
   .button-phone .button-phone-item:last-child {
-    margin-right: 5vw;
+    margin-right:20px;
   }
   
   .footer {

@@ -11,11 +11,12 @@ html
 
       .title-bar
         .title-text berd
+        br
+        .title-subtext web design & development
 
       .title-image
         .title-image-inner
-          .title-image-text
-            .title-image-text-inner web design & development
+        .title-image-inner-2
 
         .title-panel(id="professional-panel")
           .panel-item 
@@ -74,16 +75,38 @@ html
         }
       });
       
+      var openPanel = null;
+      
       function showHidePanel(panel) {
+
         if (window.innerWidth > 800) {
-          if($('#professional-panel').css('display') == 'block' || $('#projects-panel').css('display') == 'block' || $('#about-panel').css('display') == 'block' || $('#contact-panel').css('display') == 'block'){
-            $('.button').css('transform', 'translate(0%, 0%)');
-            if($('#'+panel+'-panel').css('display') != 'block') { window.location.hash = panel; $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)'); setTimeout(()=>{ $('#'+panel+'-panel').slideToggle(200);}, 100); }
-            else { history.replaceState(null, null, ' '); }
-            $('.title-panel').slideUp(100);
+        
+          // Reset buttons
+          $('.button').css('transform', 'translate(0%, 0%)');
+          
+          // if there is an openPanel
+          if(openPanel != null){
+            // if we clicked the same panel
+            if($('#'+panel+'-panel').is(openPanel)) {
+              // close it and unset openPanel
+              $('.title-image-inner-2').fadeOut();
+              openPanel.animate({width:'toggle'}, 100);
+              openPanel = null;
+              history.replaceState(null, null, ' ');
+            // else close the openPanel and set a new one
+            } else {
+              openPanel.animate({width:'toggle'}, 100);
+              window.location.hash = panel;
+              $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
+              openPanel = $('#'+panel+'-panel');
+              setTimeout(()=>{ openPanel.animate({width:'toggle'}, 200); }, 200);
+            }
+          // else set an openPanel
           } else {
+            $('.title-image-inner-2').fadeIn();
             window.location.hash = panel;
-            $('#'+panel+'-panel').slideToggle(200);
+            openPanel = $('#'+panel+'-panel');
+            openPanel.animate({width:'toggle'}, 200);
             $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
           }
           
