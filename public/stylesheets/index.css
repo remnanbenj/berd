@@ -53,25 +53,22 @@ body {
 	background: var(--main-color);
 	color: #FFFFFF;
 	text-align: center;
-	padding: 4px;
+	padding-top: 2px;
+	padding-bottom: 7px;
 	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
 	z-index: 10;
 }
 
 .title-text {
-	margin-top: 25px;
     font-family: 'Aldrich', monospace;
 	font-size: 48px;
 	font-weight: bold;
-	line-height: 20px;
 }
 
 .title-subtext {
-	margin-top: 2px;
-	margin-bottom: 12px;
+	margin-top: -8px;
     font-family: 'Aldrich', monospace;
 	font-size: 20px;
-	line-height: 20px;
 }
 
 .title-image {
@@ -210,7 +207,7 @@ body {
 	left: 0px;
 	right: 0px;
 	font-size: 21px;
-	font-weight: bold;
+	font-weight: 500;
 	text-align: center;
 	color: white;
 }
