@@ -175,7 +175,7 @@ body {
 
 .button-container {
 	position: relative;
-	padding-top: 40px;
+	padding-top: calc( ( 100vh - 400px ) / 3 );
 	padding-bottom: 30px;
 	overflow: auto;
 	margin: 0 auto;
