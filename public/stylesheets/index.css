@@ -57,13 +57,15 @@ body {
 
 .title-bar {
 	position: relative;
-	background: var(--main-color);
-	color: #FFFFFF;
-	height: 10vh;
-    text-align: center;
-	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
-	z-index: 10;
+	height: 70px;
     padding-right: 10px;
+    
+	color: #FFFFFF;
+    text-align: center;
+    
+	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+	background: var(--main-color);
+	z-index: 10;
 }
 
 .title-bar-inner {
@@ -75,22 +77,23 @@ body {
 
 .title-text {
     float: left;
-    padding-top: .6vh;
+    padding-top: 8px;
     font-family: 'Aldrich', monospace;
-	font-size: 8vh;
+	font-size: 50px;
 }
 
 .title-subtext {
     float: left;
-    padding-top: 2.3vh;
-    padding-left: 1vw;
+    padding-top: 15px;
+    padding-left: 10px;
     font-family: 'Aldrich', monospace;
-	font-size: 2.5vh;
+	font-size: 18px;
 }
 
 .title-image {
 	position: relative;
-	height: 46vh;
+	height: 400px;
+    max-height: 50vh;
 	background: var(--main-color-bright);
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -114,7 +117,7 @@ body {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	background: rgba(0,0,0,0);
+	background: rgba(0,0,0,0.3);
 }
 
 .title-image-text {
@@ -152,7 +155,6 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-	background: rgba(0,0,0,0.6);
 }
 
 .panel-title {
@@ -161,15 +163,17 @@ body {
 	left: 2vw;
 	
 	color: #FFFFFF;
-	font-size: 3.4vh;
+	font-size: 24px;
 	font-weight: 500;
 }
 
 .panel-item {
 	display: inline-block;
     position: relative;
-	height: 30vh;
-	width: calc(60vh - 5px);
+	height: 270px;
+	max-height: 34vh;
+	width: 480px;
+	max-width: calc(60vh - 5px);
 	margin-top: 9vh;
 	margin-left: 2.4vw;
 	background: var(--main-color);
@@ -197,14 +201,16 @@ body {
 	position: relative;
 	overflow: auto;
 	padding-top: 5vh;
-	padding-bottom: 5vh;
+	padding-bottom: 30px;
 }
 
 .button {
 	position: relative;
 	bottom: 0px;
 	float: left;
-    height: 26vh;
+    height: calc(100vh - 530px);
+    min-height: 100px;
+    max-height: 30vh;
 	width: 22.5vw;
 	margin-left: 2%;
 	border-radius: 5px;
@@ -308,7 +314,6 @@ body {
 	height: 200px;
 	width: calc(100% - 30px);
 	max-height: none;
-	max-width: none;
 	margin: 15px;
 	margin-top: 0px;
 	margin-bottom: 25px;
