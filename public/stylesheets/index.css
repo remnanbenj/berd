@@ -19,7 +19,7 @@ body {
 .main-container {
 	position: relative;
 	min-height: calc(100% - 30px);
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 
 
@@ -175,11 +175,11 @@ body {
 
 .button-container {
 	position: relative;
-	padding-top: calc( ( 100vh - 400px ) / 3 );
+	padding-top: 5vh;
 	padding-bottom: 30px;
 	overflow: auto;
 	margin: 0 auto;
-	max-width: 1600px;
+	max-width: 1500px;
 	margin-bottom: 15px;
 }
 
@@ -187,7 +187,7 @@ body {
 	position: relative;
 	bottom: 0px;
 	float: left;
-	height: 180px;
+	height: calc( 84vh - 410px );
 	width: 22.5%;
 	margin-left: 2%;
 	border-radius: 5px;
@@ -244,7 +244,7 @@ body {
 .footer {
     position: absolute;
     left: 0px;
-    bottom: 10px;
+    bottom: 0px;
     right: 0px;
 }
 
