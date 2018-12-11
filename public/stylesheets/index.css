@@ -66,7 +66,6 @@ body {
 	box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
 	background: var(--main-color);
 	z-index: 10;
-    border-top: 1px solid red;
 }
 
 .title-bar-inner {
@@ -85,10 +84,10 @@ body {
 
 .title-subtext {
     float: left;
-    padding-top: 15px;
+    padding-top: 14px;
     padding-left: 10px;
     font-family: 'Aldrich', monospace;
-	font-size: 18px;
+	font-size: 19px;
 }
 
 .title-image {
@@ -279,11 +278,22 @@ body {
 /* Media */
 
 @media only screen and (max-width: 800px) {
-  .title-bar {
-	padding: 5px;
-	padding-top: 15px;
-	margin-bottom: 25px;
-  }
+    .title-bar {
+        margin-bottom: 25px;
+        padding: 0px;
+        height: auto;
+    }
+    .title-bar-inner {
+        height: auto;
+        margin-bottom: -8px;
+    }
+    .title-text {
+        padding-top: 0px;
+    }
+    .title-subtext {
+        padding-top: 6px;
+        padding-left: 20px;
+    }
   
   .title-image {
 	display: none;
