@@ -188,6 +188,7 @@ body {
 	bottom: 0px;
 	float: left;
 	height: calc( 84vh - 410px );
+    max-height: 220px;
 	width: 22.5%;
 	margin-left: 2%;
 	border-radius: 5px;
