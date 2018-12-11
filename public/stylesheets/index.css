@@ -208,9 +208,7 @@ body {
 	position: relative;
 	bottom: 0px;
 	float: left;
-    height: calc(100vh - 530px);
-    min-height: 100px;
-    max-height: 30vh;
+    height: 12.5vw;
 	width: 22.5vw;
 	margin-left: 2%;
 	border-radius: 5px;
