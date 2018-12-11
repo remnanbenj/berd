@@ -8,34 +8,42 @@ html
 
   body
     .main-container
-
+      
       .title-bar
-        .title-text berd
-        .title-subtext web design & development
+        .title-bar-inner
+          .title-text berd
+          .title-subtext web design &<br>development
 
       .title-image
         .title-image-inner
+            
         .title-image-inner-2
+        
+        .panel-container
 
-        .title-panel(id="professional-panel")
-          .panel-item 
-          .panel-item 
-          .panel-item 
-          .panel-item(style="margin-right: 2.5vw;")
+          .title-panel(id="professional-panel")
+            .panel-title recent <span style="color: var(--main-color-bright);">professional</span> work
+            .panel-item 
+            .panel-item 
+            .panel-item(style="margin-right: 2.5vw;")
 
-        .title-panel(id="projects-panel")
-          .panel-item 
-          .panel-item 
-          .panel-item 
-          .panel-item(style="margin-right: 2.5vw;")
+          .title-panel(id="projects-panel")
+            .panel-title recent personal <span style="color: var(--main-color-bright);">projects</span>
+            .panel-item 
+            .panel-item 
+            .panel-item 
+            .panel-item(style="margin-right: 2.5vw;")
 
-        .title-panel(id="about-panel")
+          .title-panel(id="about-panel")
+            .panel-title all <span style="color: var(--main-color-bright);">about</span> berd
 
-        .title-panel(id="contact-panel")
-
-      .content
-        .button-container
-            .button.professional-button(onclick="showHidePanel('professional')")
+          .title-panel(id="contact-panel")
+            .panel-title how to <span style="color: var(--main-color-bright);">contact</span> us
+        
+        
+        
+      .button-container
+            .button.professional-button.clicked(onclick="showHidePanel('professional')")
               .button-text professional
             .button-phone.button-phone-professional
               .button-phone-item
@@ -89,23 +97,23 @@ html
             if($('#'+panel+'-panel').is(openPanel)) {
               // close it and unset openPanel
               $('.title-image-inner-2').fadeOut();
-              openPanel.animate({width:'toggle'}, 100);
+              openPanel.animate({width:'toggle'}, 200);
               openPanel = null;
               history.replaceState(null, null, ' ');
             // else close the openPanel and set a new one
             } else {
-              openPanel.animate({width:'toggle'}, 100);
+              openPanel.animate({width:'toggle'}, 200);
               window.location.hash = panel;
               $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
               openPanel = $('#'+panel+'-panel');
-              setTimeout(()=>{ openPanel.animate({width:'toggle'}, 200); }, 200);
+              setTimeout(()=>{ openPanel.animate({width:'toggle'}, 300); }, 250);
             }
           // else set an openPanel
           } else {
             $('.title-image-inner-2').fadeIn();
             window.location.hash = panel;
             openPanel = $('#'+panel+'-panel');
-            openPanel.animate({width:'toggle'}, 200);
+            openPanel.animate({width:'toggle'}, 300);
             $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
           }
           
