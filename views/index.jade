@@ -74,6 +74,30 @@ html
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
     script(src="/javascripts/jquery.mousewheel.min.js").
     script.
+
+      // Typewriter
+      var speed = 110;
+      function typeWriter(elemID, txt, index) {
+        if (index < txt.length) {
+          document.getElementById(elemID).innerHTML += txt.charAt(index);
+          index++;
+          setTimeout(function(){typeWriter(elemID, txt, index);}, speed);
+        }
+      }
+      
+      function typeWriterR(id, wordNum, i) {
+        if (i >= 0) {
+          document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.substring(0, document.getElementById(id).innerHTML.length - 1);
+          i--;
+          setTimeout(function(){typeWriterR(id, wordNum, i);}, speed * 0.8);
+        } else {
+          wordNum++;
+          if(wordNum==words.length) wordNum = 0;
+          setTimeout(function(){typeWriter('esign', wordNum, 0);}, 200);
+        }
+      }
+      setTimeout(function(){typeWriterR('esign', 0, words[0].length);}, 1400);
+
     
       $(".title-panel").mousewheel(function(event) {
         if(event.deltaY != 0) {
