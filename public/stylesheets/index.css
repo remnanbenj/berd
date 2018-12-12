@@ -284,13 +284,15 @@ body {
         height: auto;
     }
     .title-bar-inner {
+        width: 100%;
         height: auto;
         margin-bottom: -8px;
     }
     .title-text {
-        padding-top: 0px;
+        padding-top: 1px;
     }
     .title-subtext {
+        float: right;
         padding-top: 6px;
         padding-left: 20px;
     }
