@@ -4,6 +4,7 @@ html
   head
     title= title
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/index.css')
 
   body
@@ -23,13 +24,13 @@ html
 
           .title-panel(id="professional-panel")
             .panel-title recent <span style="color: var(--main-color-bright);">professional</span> work
-            .panel-item 
+            .panel-item
             .panel-item 
             .panel-item(style="margin-right: 2.5vw;")
 
           .title-panel(id="projects-panel")
             .panel-title recent personal <span style="color: var(--main-color-bright);">projects</span>
-            .panel-item 
+            .panel-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')")
             .panel-item 
             .panel-item 
             .panel-item(style="margin-right: 2.5vw;")
@@ -49,12 +50,11 @@ html
               .button-phone-item
               .button-phone-item
               .button-phone-item
-              .button-phone-item
 
             .button.projects-button(onclick="showHidePanel('projects')")
               .button-text projects
             .button-phone.button-phone-projects
-              .button-phone-item
+              .button-phone-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')")
               .button-phone-item
               .button-phone-item
               .button-phone-item
@@ -69,25 +69,137 @@ html
 
       .footer
         .footer-copyright © berd design & development, 2018
+        
+    .mymodal-dimmer(onclick="modalClose()")
+    .mymodal
+      .mymodal-titlebar
+      .mymodal-content
 
 
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
     script(src="/javascripts/jquery.mousewheel.min.js").
     script.
-    
-      $(".title-panel").mousewheel(function(event) {
-        if(event.deltaY != 0) {
-          event.preventDefault();
-          $(this).scrollLeft($(this).scrollLeft() + (event.deltaFactor*-event.deltaY));
+
+        // Override mouse scroll direction in the panels from vertical to horizontal 
+
+        $(".title-panel").mousewheel(function(event) {
+          if(event.deltaY != 0) {
+            event.preventDefault();
+            $(this).scrollLeft($(this).scrollLeft() + (event.deltaFactor*-event.deltaY));
+          }
+        });
+
+        // ALTERING ANIMATIONS
+
+        // Show modal
+        function modalOpen(title, buttons) {
+
+          var modalTitlebarHTML = '';
+
+          // Set modal title
+          modalTitlebarHTML += '<div class="mymodal-title">'+title+'</div>';
+
+          // Add modal menu buttons (for desktop)
+          buttons.split(':').forEach(function(item, index){
+            modalTitlebarHTML += '<div class="mymodal-title-button index'+index+'">'+item+'</div>';
+          });
+
+          // Add modal menu dropdown (for phones)
+          modalTitlebarHTML += '<div class="mymodal-dropdown">';
+          buttons.split(':').forEach(function(item, index){
+            modalTitlebarHTML += '<div class="mymodal-dropdown-button index'+index+'">'+item+'</div>';
+          });
+          modalTitlebarHTML += '</div>';
+
+          // Add modal close button
+          modalTitlebarHTML += '<div class="mymodal-close" onclick="modalClose()"><span class="glyphicon glyphicon-remove"></span></div>';
+
+          // Add modal menu button (for phones)
+          modalTitlebarHTML += '<div class="mymodal-menu" onclick="openModalMenu()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>';
+
+          $('.mymodal-titlebar').html(modalTitlebarHTML);
+
+          // Make modal menu buttons clickable (for phones)
+          $('.mymodal-dropdown-button').click(function(){
+            clickedModalMenuButton($(this));
+          });
+
+          // Make modal menu buttons clickable (for desktop)
+          $('.mymodal-title-button').click(function(){
+            clickedModalMenuButton($(this));
+          });
+          
+          // Stop scrolling on body
+          $('body').css('overflow', 'hidden');
+
+          // Show modal
+          $('.mymodal-dimmer').fadeIn();
+          $('.mymodal').slideToggle(200);
+
+          // Select first modal menu button and start loading
+          clickedModalMenuButton($('.mymodal-title-button').first());
         }
-      });
+
+        function openModalMenu() {
+          $(".mymodal-dropdown").slideToggle(200);
+        }
+
+        // Hide modal
+        function modalClose() {
+          
+          // Start scrolling on body
+          $('body').css('overflow', 'auto');
+          
+          $('.mymodal-dimmer').fadeOut();
+          $('.mymodal').slideToggle(200);
+          // Clear submenu buttons and current submenu page to save RAM
+          setTimeout(function() {
+            $('.mymodal-content').html('');
+          }, 600);
+        }
+
+        // Click modal submenu button
+        function clickedModalMenuButton(button){
+          // Clear other submenu buttons and select the one that was clicked
+          $('.mymodal-title-button').removeClass('selected');
+          $('.mymodal-dropdown-button').removeClass('selected');
+
+          var myClasses = $(button).attr('class').split(' ');
+          for (var i = 0; i < myClasses.length; i++) {
+            if (myClasses[i].startsWith("index")) {
+              $('.' + myClasses[i]).addClass('selected');
+            }
+            if (myClasses[i] == 'mymodal-dropdown-button') {
+              $(".mymodal-dropdown").slideToggle(200);
+            }
+          }
+          $(button).addClass('selected');
+
+          // Clear and show loading
+          var loadingHTML = '<div class="mymodal-loading"></div>';
+          $('.mymodal-content').html(loadingHTML);
+
+          // Get new data from server and display it
+          setTimeout(function() {
+            var html = '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+            html += '<div class="mymodal-content-image"></div>';
+            html += '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+            html += '<div class="mymodal-content-text">As part of our ongoing technology upgrade, we’re saying goodbye to some older services. And while this isn’t happening right away, new services can take a while to set up, so it’s worth getting onto it as soon as you can.</div>';
+            html += '<div class="mymodal-content-image"></div>';
+            $('.mymodal-content').html(html);
+          }, 1000);
+        }
+    
       
-      var openPanel = null;
       
-      function showHidePanel(panel) {
+        // Show or hide panels in the display panel
+
+        var openPanel = null;
+
+        function showHidePanel(panel) {
 
         if (window.innerWidth > 800) {
-        
+
           // Reset buttons
           $('.button').css('transform', 'translate(0%, 0%)');
           
@@ -140,7 +252,7 @@ html
             $('.button-phone-'+panel).slideToggle(200);
           }
         }
-      }
+        }
       
       
       
