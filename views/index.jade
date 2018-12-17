@@ -24,16 +24,48 @@ html
 
           .title-panel(id="professional-panel")
             .panel-title recent <span style="color: var(--main-color-bright);">professional</span> work
-            .panel-item
-            .panel-item 
-            .panel-item(style="margin-right: 2.5vw;")
+            
+            .panel-item(onclick="modalOpen('DINZ', '')" style="background-position: 50% 0%; background-image: url('/images/dinz-website.jpg'); margin-left: 70px;")
+              .panel-item-title
+                .panel-item-title-text Danfoss NZ Website
+              .panel-item-summary 
+                span A unique collaboration tool built with Node.js for Danfoss NZ and their partners. 
+                span Danfoss are a global company selling a variety engineered products from motor speed drives to pumps.
+            
+            .panel-item(onclick="modalOpen('Z Energy HTML Email', '')" style="background-position: 50% 0%; background-image: url('/images/z-energy-html.jpg');")
+              .panel-item-title
+                .panel-item-title-text Z Energy HTML Email
+              .panel-item-summary 
+            
+            .panel-item(onclick="modalOpen('berd', '')" style="background-position: 50% 0%; background-image: url('/images/berd-website.jpg'); margin-right: 70px;")
+              .panel-item-title
+                .panel-item-title-text Berd Website
+              .panel-item-summary 
+                span This website aims to serve as a online portfolio for <span style="font-family: 'Aldrich', monospace;">berd</span> and a portal of communication for both new and existing clients.
+            
 
           .title-panel(id="projects-panel")
             .panel-title recent personal <span style="color: var(--main-color-bright);">projects</span>
-            .panel-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')")
-            .panel-item 
-            .panel-item 
-            .panel-item(style="margin-right: 2.5vw;")
+            
+            .panel-item(onclick="modalOpen('Autonomous RC Car', 'Research:Development:Conclusion')" style="background-position: 50% 100%; background-image: url('/images/rc-car.jpg'); margin-left: 70px;")
+              .panel-item-title
+                .panel-item-title-text Autonomous RC Car
+              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
+            
+            .panel-item(onclick="modalOpen('Solar Panels', 'Research:Development')" style="background-image: url('/images/solar-panel.jpg');")
+              .panel-item-title
+                .panel-item-title-text Solar Panels
+              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
+            
+            .panel-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')" style="background-position: 50% 20%; background-image: url('/images/tomato.jpg');")
+              .panel-item-title
+                .panel-item-title-text Tomato Garden
+              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
+            
+            .panel-item(onclick="modalOpen('Power Monitor', 'Research:Development:Conclusion')" style="background-image: url('/images/PWRMTR.jpg'); margin-right: 70px;")
+              .panel-item-title
+                .panel-item-title-text Power Monitor
+              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
 
           .title-panel(id="about-panel")
             .panel-title all <span style="color: var(--main-color-bright);">about</span> berd
@@ -44,7 +76,7 @@ html
         
         
       .button-container
-            .button.professional-button.clicked(onclick="showHidePanel('professional')")
+            .button.professional-button(onclick="showHidePanel('professional')")
               .button-text professional
             .button-phone.button-phone-professional
               .button-phone-item
@@ -53,11 +85,6 @@ html
 
             .button.projects-button(onclick="showHidePanel('projects')")
               .button-text projects
-            .button-phone.button-phone-projects
-              .button-phone-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')")
-              .button-phone-item
-              .button-phone-item
-              .button-phone-item
 
             .button.right.about-button(onclick="showHidePanel('about')")
               .button-text about

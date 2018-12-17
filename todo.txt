@@ -1,0 +1,34 @@
+Important:
+
+    Summaries:
+        Z Energy
+        
+        Autonomous RC Car
+        Solar Panels
+        Tomato Garden
+        Power Monitor
+        
+    Submenus:
+        DINZ
+        Z Energy
+        berd
+        
+    Articles:
+        DINZ
+        Z Energy
+        berd
+        
+        Autonomous RC Car
+        Solar Panels
+        Tomato Garden
+        Power Monitor
+        
+    About
+    
+    Contact
+    
+
+Not Important:
+
+    links to inner menus (auto open menus when denoted in the URL)
+

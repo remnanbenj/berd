@@ -18,6 +18,9 @@ body {
 
 .main-container {
 	position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    
 	min-height: calc(100% - 30px);
     padding-bottom: 30px;
 }
@@ -33,7 +36,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #444;
 }
 
 /* Handle */
@@ -42,7 +45,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--main-color-bright);
+  background: #fff;
 }
 
 @media only screen and (max-width: 820px) {
@@ -92,8 +95,7 @@ body {
 
 .title-image {
 	position: relative;
-	height: 400px;
-    max-height: 50vh;
+	height: 380px;
 	background: var(--main-color-bright);
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -159,7 +161,7 @@ body {
 
 .panel-title {
     position: absolute;
-	top: 3vh;
+	top: 20px;
 	left: 2vw;
 	
 	color: #FFFFFF;
@@ -170,28 +172,79 @@ body {
 .panel-item {
 	display: inline-block;
     position: relative;
-	height: 270px;
-	max-height: 34vh;
-	width: 480px;
-	max-width: calc(60vh - 5px);
-	margin-top: 9vh;
-	margin-left: 2.4vw;
-	background: var(--main-color);
-	box-shadow: 0 10px 30px rgba(0,0,0,0.30), 0 5px 10px rgba(0,0,0,0.20);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    border-radius: 6px;
+	height: 200px;
+	width: 400px;
+	margin-top: 80px;
+	margin-left: 80px;
+    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.4);
+	transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+    border-radius: 2px;
     cursor: pointer;
+    
+	background: var(--main-color);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover; 
 }
 
 .panel-item:hover {
-	transform: translate(0px, -5px);
-	box-shadow: 0 15px 35px rgba(0,0,0,0.40), 0 10px 15px rgba(0,0,0,0.30);
+	transform: translate(20px, -20px);
 }
 
-.panel-bottom {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
+.panel-item-title {
+    position: absolute;
+    top: calc(100% - 90px);
+    left: -30px;
+    text-align: center;
+    transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.2);
+    border-radius: 1px;
+	background: rgba(0,148,255,1);
+}
+
+.panel-item-title-text {
+    padding: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: inline-block;
+    font-family: 'Aldrich', monospace;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+    
+}
+
+.panel-item:hover .panel-item-title {
+	transform: translate(-50px, 45px);
+}
+
+.panel-item-summary {
+    position: absolute;
+    left: -20px;
+    right: 20px;
+    top:  calc(100% - 45px);
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: normal;
+    text-align: justify;
+    color: #fff;
+	/*background: rgba(255,255,255,0.9);*/
+	background: var(--main-color);
+    box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.2);
+    
+    border-radius: 1px;
+    line-height: 115%;
+	transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+    opacity: 1;
+    font-family: 'Aldrich', monospace;
+}
+
+.panel-item:hover .panel-item-summary {
+    transform: translate(-20px, 40px);
 }
 
 
@@ -200,16 +253,19 @@ body {
 .button-container {
 	position: relative;
 	overflow: auto;
-	padding-top: 5vh;
+	padding-top: 30px;
 	padding-bottom: 30px;
 }
 
+.button-phone {
+    display: none;
+}
+
 .button {
+    display: inline-block;
 	position: relative;
-	bottom: 0px;
-	float: left;
-    height: 12.5vw;
-	width: 22.5vw;
+	width: 22.5%;
+    padding-top: 13.5%;
 	margin-left: 2%;
 	border-radius: 5px;
 	background-repeat: no-repeat;
@@ -382,7 +438,7 @@ body {
 
 .mymodal-dimmer {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -410,10 +466,10 @@ body {
   height: 50px;
   width: 800px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 0px;
   
   font-family: 'Anonymous Pro', monospace;
-  border-bottom: 10px solid var(--main-color);
+  border-bottom: 6px solid var(--main-color);
   background: #FFFFFF;
   
   transition: transform 0.3s;
@@ -512,7 +568,7 @@ body {
 /* Modal Content */
 
 .mymodal-content {
-  height: calc(100vh - 100px);
+  height: calc(100% - 90px);
   width: 740px;
   margin: 0 auto;
   margin-top: 0px;
@@ -525,7 +581,7 @@ body {
 }
 
 .mymodal-content::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 .mymodal-loading {
