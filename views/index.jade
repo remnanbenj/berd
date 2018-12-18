@@ -12,90 +12,52 @@ html
       
       .title-bar
         .title-bar-inner
-          .title-text berd
-          .title-subtext web design &<br>development
+          .title-bar-inner-height
+            .title-text berd
+            br
+            .title-subtext web design & development&nbsp;
 
-      .title-image
-        .title-image-inner
+      .hero-image-container
+        .hero-image-container-inner
+          .hero-image-container-inner-height
+          
+            .hero-image.hero-3(onclick="clickedHeroImage(3, this)")
+              .hero-image-inner
+            .hero-image.hero-2(onclick="clickedHeroImage(2, this)")
+              .hero-image-inner
+            .hero-image.hero-1(onclick="clickedHeroImage(1, this)")
+              .hero-image-inner
+            .hero-image.hero-0(onclick="clickedHeroImage(0, this)")
             
-        .title-image-inner-2
-        
-        .panel-container
-
-          .title-panel(id="professional-panel")
-            .panel-title recent <span style="color: var(--main-color-bright);">professional</span> work
-            
-            .panel-item(onclick="modalOpen('DINZ', '')" style="background-position: 50% 0%; background-image: url('/images/dinz-website.jpg'); margin-left: 70px;")
-              .panel-item-title
-                .panel-item-title-text Danfoss NZ Website
-              .panel-item-summary 
-                span A unique collaboration tool built with Node.js for Danfoss NZ and their partners. 
-                span Danfoss are a global company selling a variety engineered products from motor speed drives to pumps.
-            
-            .panel-item(onclick="modalOpen('Z Energy HTML Email', '')" style="background-position: 50% 0%; background-image: url('/images/z-energy-html.jpg');")
-              .panel-item-title
-                .panel-item-title-text Z Energy HTML Email
-              .panel-item-summary 
-            
-            .panel-item(onclick="modalOpen('berd', '')" style="background-position: 50% 0%; background-image: url('/images/berd-website.jpg'); margin-right: 70px;")
-              .panel-item-title
-                .panel-item-title-text Berd Website
-              .panel-item-summary 
-                span This website aims to serve as a online portfolio for <span style="font-family: 'Aldrich', monospace;">berd</span> and a portal of communication for both new and existing clients.
-            
-
-          .title-panel(id="projects-panel")
-            .panel-title recent personal <span style="color: var(--main-color-bright);">projects</span>
-            
-            .panel-item(onclick="modalOpen('Autonomous RC Car', 'Research:Development:Conclusion')" style="background-position: 50% 100%; background-image: url('/images/rc-car.jpg'); margin-left: 70px;")
-              .panel-item-title
-                .panel-item-title-text Autonomous RC Car
-              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
-            
-            .panel-item(onclick="modalOpen('Solar Panels', 'Research:Development')" style="background-image: url('/images/solar-panel.jpg');")
-              .panel-item-title
-                .panel-item-title-text Solar Panels
-              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
-            
-            .panel-item(onclick="modalOpen('Tomato Garden', 'Planting:Maintainence & Growth:Harvest')" style="background-position: 50% 20%; background-image: url('/images/tomato.jpg');")
-              .panel-item-title
-                .panel-item-title-text Tomato Garden
-              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
-            
-            .panel-item(onclick="modalOpen('Power Monitor', 'Research:Development:Conclusion')" style="background-image: url('/images/PWRMTR.jpg'); margin-right: 70px;")
-              .panel-item-title
-                .panel-item-title-text Power Monitor
-              .panel-item-summary Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra, mauris id porttitor placerat, lorem quam sagittis turpis, vel mattis arcu risus semper orci.
-
-          .title-panel(id="about-panel")
-            .panel-title all <span style="color: var(--main-color-bright);">about</span> berd
-
-          .title-panel(id="contact-panel")
-            .panel-title how to <span style="color: var(--main-color-bright);">contact</span> us
-        
-        
-        
+            .hero-button View more of our work
+      
       .button-container
-            .button.professional-button(onclick="showHidePanel('professional')")
-              .button-text professional
-            .button-phone.button-phone-professional
-              .button-phone-item
-              .button-phone-item
-              .button-phone-item
-
-            .button.projects-button(onclick="showHidePanel('projects')")
-              .button-text projects
-
-            .button.right.about-button(onclick="showHidePanel('about')")
-              .button-text about
-            .button-phone.button-phone-about
-
-            .button.right.contact-button(onclick="showHidePanel('contact')")
-              .button-text contact
-            .button-phone.button-phone-contact
-
-      .footer
-        .footer-copyright © berd design & development, 2018
+      
+        .button.professional
+          .button-text 
+            span.button-title professional
+            br
+            span.button-desc previous commissioned work from a variety of clients
+        
+        .button-right
+        
+          .button.projects
+            .button-text
+              span.button-title projects
+              br
+              span.button-desc  personal hobbies that I do in my spare time
+          
+          .button-small-buttons
+            .button.about
+              .button-title about
+            .button.contact
+              .button-title contact
+            
+      .offer-container
+        .offer-title Need a website?
+        .offer-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis iaculis neque, et rutrum eros. Donec interdum vestibulum mi at bibendum. Integer ornare id risus vel malesuada. Sed vitae ex nec ex laoreet egestas dictum a orci. Aliquam maximus mollis est, sed placerat sapien viverra vitae.
+      
+      .footer © berd design & development, 2018
         
     .mymodal-dimmer(onclick="modalClose()")
     .mymodal
@@ -106,6 +68,22 @@ html
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
     script(src="/javascripts/jquery.mousewheel.min.js").
     script.
+    
+        if(window.innerWidth < 600) {
+            clickedHeroImage(1, $('.hero-1'))
+        }
+        
+    
+        function clickedHeroImage(id, elem) {
+            if(window.innerWidth < 600) {
+                if(id != 0) {
+                    $('.hero-image').css('transform', '');
+                    console.log($(elem).css('background-image'));
+                    $('.hero-0').css('background-image', $(elem).css('background-image'));
+                    $(elem).css('transform', 'translate(0px, -5px)');
+                }
+            }
+        }
 
         // Override mouse scroll direction in the panels from vertical to horizontal 
 
@@ -224,61 +202,62 @@ html
         var openPanel = null;
 
         function showHidePanel(panel) {
+            return;
+            if (window.innerWidth > 800) {
 
-        if (window.innerWidth > 800) {
-
-          // Reset buttons
-          $('.button').css('transform', 'translate(0%, 0%)');
-          
-          // if there is an openPanel
-          if(openPanel != null){
-            // if we clicked the same panel
-            if($('#'+panel+'-panel').is(openPanel)) {
-              // close it and unset openPanel
-              $('.title-image-inner-2').fadeOut();
-              openPanel.animate({width:'toggle'}, 200);
-              openPanel = null;
-              history.replaceState(null, null, ' ');
-            // else close the openPanel and set a new one
-            } else {
-              openPanel.animate({width:'toggle'}, 200);
-              window.location.hash = panel;
-              $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
-              openPanel = $('#'+panel+'-panel');
-              setTimeout(()=>{ openPanel.animate({width:'toggle'}, 300); }, 250);
-            }
-          // else set an openPanel
-          } else {
-            $('.title-image-inner-2').fadeIn();
-            window.location.hash = panel;
-            openPanel = $('#'+panel+'-panel');
-            openPanel.animate({width:'toggle'}, 300);
-            $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
-          }
-          
-        } else {
-          if($('.button-phone-professional').css('display') == 'block' || $('.button-phone-projects').css('display') == 'block' || $('.button-phone-about').css('display') == 'block' || $('.button-phone-contact').css('display') == 'block') {
-            var isClosing = $('.button-phone-'+panel).css('display') != 'block';
-            if(isClosing) $('.button-phone').slideUp(10);
-            setTimeout(()=>{
-              if($('.button-phone-'+panel).css('display') != 'block'){
-                $([document.documentElement, document.body]).animate({
-                  scrollTop: $('.'+panel+'-button').offset().top - 15
-                }, 200);
+              // Reset buttons
+              $('.button').css('transform', 'translate(0%, 0%)');
+              
+              // if there is an openPanel
+              if(openPanel != null){
+                // if we clicked the same panel
+                if($('#'+panel+'-panel').is(openPanel)) {
+                  // close it and unset openPanel
+                  $('.title-image-inner-2').fadeOut();
+                  openPanel.animate({width:'toggle'}, 200);
+                  openPanel = null;
+                  history.replaceState(null, null, ' ');
+                // else close the openPanel and set a new one
+                } else {
+                  openPanel.animate({width:'toggle'}, 200);
+                  window.location.hash = panel;
+                  $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
+                  openPanel = $('#'+panel+'-panel');
+                  setTimeout(()=>{ openPanel.animate({width:'toggle'}, 300); }, 250);
+                }
+              // else set an openPanel
+              } else {
+                $('.title-image-inner-2').fadeIn();
+                window.location.hash = panel;
+                openPanel = $('#'+panel+'-panel');
+                openPanel.animate({width:'toggle'}, 300);
+                $('.'+panel+'-button').css('transform', 'translate(0%, -2vh)');
               }
-              if(isClosing) {  $('.button-phone-'+panel).slideToggle(200); window.location.hash = panel; }
-              else { $('.button-phone-'+panel).slideToggle(200); history.replaceState(null, null, ' '); }
-            }, 20);
-          } else {
-            if($('.button-phone-'+panel).css('display') != 'block'){
-              $([document.documentElement, document.body]).animate({
-                scrollTop: $('.'+panel+'-button').offset().top - 15
-              }, 200);
+              
+            } else {
+              if($('.button-phone-professional').css('display') == 'block' || $('.button-phone-projects').css('display') == 'block' || $('.button-phone-about').css('display') == 'block' || $('.button-phone-contact').css('display') == 'block') {
+                var isClosing = $('.button-phone-'+panel).css('display') != 'block';
+                if(isClosing) $('.button-phone').slideUp(10);
+                setTimeout(()=>{
+                  if($('.button-phone-'+panel).css('display') != 'block'){
+                    $([document.documentElement, document.body]).animate({
+                      scrollTop: $('.'+panel+'-button').offset().top - 15
+                    }, 200);
+                  }
+                  if(isClosing) {  $('.button-phone-'+panel).slideToggle(200); window.location.hash = panel; }
+                  else { $('.button-phone-'+panel).slideToggle(200); history.replaceState(null, null, ' '); }
+                }, 20);
+              } else {
+                if($('.button-phone-'+panel).css('display') != 'block'){
+                  $([document.documentElement, document.body]).animate({
+                    scrollTop: $('.'+panel+'-button').offset().top - 15
+                  }, 200);
+                }
+                window.location.hash = panel;
+                $('.button-phone-'+panel).slideToggle(200);
+              }
             }
-            window.location.hash = panel;
-            $('.button-phone-'+panel).slideToggle(200);
-          }
-        }
+            
         }
       
       
