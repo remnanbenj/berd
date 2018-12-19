@@ -9,14 +9,6 @@ html
 
   body
     .main-container
-    
-      //-.nav
-        .nav-container
-          .nav-container-inner
-          
-        .nav-button
-          .glyphicon.glyphicon-menu-hamburger
-          
 
       .title-bar
         .title-bar-inner
@@ -39,66 +31,32 @@ html
             .hero-image.hero-0(onclick="clickedHeroImage(0, this)")
             
             .hero-button View more of our work
-      
-      
-      //-.button-container
-      
-        .button.professional
-          .button-text 
-            span.button-title professional
-            br
-            span.button-desc previous commissioned work from a variety of clients
-        
-        .button-right
-        
-          .button.projects
-            .button-text
-              span.button-title projects
-              br
-              span.button-desc  personal hobbies that I do in my spare time
-          
-          .button-small-buttons
-            .button.about
-              .button-title about
-            .button.contact
-              .button-title contact
               
             
       .offer-container
         .offer-title Our mission
-        
-        .offer-text
-          span Our primary goal at <span style="color: var(--main-color); font-weight: 600;">berd</span> is to bring you a custom built website on a platter.
-        
-        .offer-text
-          span We want to make the whole process as simple as possible
-          br
-          span while still delivering a high quality product.
-        
-        .offer-text
-          span Design, Development and Deployment.
-          br
-          span We take care of everything from start to finish.
-           
-           
+        .offer-text Our primary goal at <span style="color: var(--main-color); font-weight: 600;">berd</span> is to bring you a custom built website on a platter.
+        .offer-text We want to make the whole process as simple as possible<br>while still delivering a high quality product.
+        .offer-text Design, Development and Deployment.<br>We take care of everything from start to finish.
+
+
       .projects-container
         .projects-title Tech Research Projects
         .projects-text At berd we like to keep up with all the rapidly advancing technology to gain a wider range of solutions for our clients.
         .projects-text Our main focus is on the Internet Of Things (IOT).
         .projects-text We use sensors to to gain real world information and display<br>that data in human readable ways on a website. 
         .projects-image-container
-          img.projects-image(src="/images/aah.jpg")
+            img.projects-image(src="/images/aah.jpg")
         .projects-button View all projects
-      
-            
+
+
       .offer-container
         .offer-title Need a website?
         .offer-text Whether its a simple one page website to promote your brand or a large and complex tool,<br> we've got a unique solution for you.
         .offer-text Fill out our quick form below and we'll get back to you as soon as possible.
-        .offer-button Website request form
+        .offer-button(onclick="modalOpen('web-request')") Website request form
+
         
-      
-      
       .footer 
         .footer-contact-title
           span Contact us
@@ -110,14 +68,53 @@ html
         
         
     .mymodal-dimmer(onclick="modalClose()")
+    
     .mymodal
-      .mymodal-titlebar
-      .mymodal-content
-
+      .mymodal-website-request
+        .mymodal-website-request-close(onclick="modalClose()")
+          .glyphicon.glyphicon-remove
+        .mymodal-website-request-title Website request form
+        
+        .mymodal-website-request-form
+          .mymodal-website-request-label Full name
+          input.mymodal-website-request-input(placeholder="Firstname Lastname")
+          
+          .mymodal-website-request-label Email
+          input.mymodal-website-request-input(placeholder="example@example.co.nz" style="margin-bottom: 25px;")
+          
+          .mymodal-website-request-label A short summary of what you want
+          textarea.mymodal-website-request-textarea
+          
+        .mymodal-website-request-button Send request
+        
+        .mymodal-website-request-text(style="margin-bottom: 5px; font-size: 15px;") We'll get in touch as soon as we're available.
 
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js").
-    script(src="/javascripts/jquery.mousewheel.min.js").
     script.
+        
+        /* Modal */
+        
+        function modalOpen(modalPage) {
+            
+            // Show modal
+            if(modalPage == 'web-request') {
+                $('.mymodal-dimmer').fadeIn(200);
+                $('.mymodal').fadeIn(200);
+            }
+          
+            // Stop scrolling on body
+            //$('body').css('overflow', 'hidden');
+        }
+        
+        function modalClose() {
+            $('.mymodal-dimmer').fadeOut(200);
+            $('.mymodal').fadeOut(200);
+          
+            // Start scrolling on body
+            //$('body').css('overflow', 'auto');
+        }
+        
+    //-
     
         if(window.innerWidth < 600) {
             clickedHeroImage(1, $('.hero-1'))
