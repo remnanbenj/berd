@@ -426,7 +426,8 @@ body {
 /* Offer */
 
 .offer-container {
-	padding: 25px;
+	padding-top: 25px;
+	padding-bottom: 25px;
     margin-bottom: 80px;
 }
 
@@ -442,6 +443,8 @@ body {
     font-size: 19px;
     max-width: 800px;
     padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin: 0 auto;
     text-align: center;
     line-height: 150%;
